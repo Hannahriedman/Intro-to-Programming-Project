@@ -27,6 +27,9 @@
             showScene('You are now in the Jungle.' + 'Current Points: ' + points);
         } else if (currentLocation === 'Cave') {
             showScene('You walk for 20 minutes but come up to a dead end. There is no water around so you walk back to the enterence of the cave. ' + 'Current Points: ' + points);
+        } else if (currentLocation === 'Waterfall') { 
+            currentLocation = 'cave'; // changed location to cave
+            showScene('You are back at the cave enterence. ' + 'Current Points: ' + points);
         }
             
     ">North</button>
@@ -38,7 +41,9 @@
             showScene('You are now in a cave.There is a path to the North and to the South. ' + 'Current Points: ' + points);
         } else if (currentLocation === 'Cave') {
             showScene('You can not go East. There is a cave wall. ' + 'Current Points: ' + points);
-        } 
+        } else if (currentLocation === 'Waterfall') { 
+            showScene('There is no where else to go, the cave ends at the waterfall. ' + 'Current Points: ' + points);
+        }
       
     ">East</button>
     <button onclick="   
@@ -51,17 +56,22 @@
             points = 0;
             showScene('You start to swim and get caught in a rip tide. you are dead. ' + 'Current Points: ' + points);
         } else if (currentLocation === 'Cave') {
-            currentLocaton = 'Waterfall'; //changed location to waterfall
+            currentLocation = 'Waterfall'; //changed location to waterfall
             points += 5;
             showScene('You are at a Waterfall! Congrats! You have found fresh water!' + 'Current Points: ' + points);    
         } else if (currentLocation === 'Jungle') {
             currentLocation = 'Beach';
             showScene('You are now back at the Beach. ' + 'Current Points: ' + points);         
+        } else if (currentLocation === 'Waterfall') { 
+            showScene('There is no where else to go, the cave ends at the waterfall. ' + 'Current Points: ' + points);
         }
+                     
     
     ">South</button>
     <button onclick="                 
-    
+         if (currentLocation === 'Waterfall') { 
+            showScene('There is no where else to go, the cave ends at the waterfall. ' + 'Current Points: ' + points);
+        }
     ">West</button>
     
 </body>
