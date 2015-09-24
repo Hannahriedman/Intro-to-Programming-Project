@@ -5,17 +5,25 @@
     <title>Hannah's Adventure Game</title>
     <meta charset="utf-8"/>
     <script type="text/javascript">
-    
+        var currentLocation = "Beach";
+        
+        function showScene(descrip) {
+            document.getElementById("scene").innerHTML = descrip;
+        }
     </script>
 </head>
 <body>
     <h1>Welcome to Hannah's Adventure Game!</h1>
-    <div id="scene">You are on a deserted island. Your plane crashed, you are the only survior.</div>
+    <div id="scene">You are on a deserted island. Your plane crashed,and you are the only survior. Currently you are on the beach.</div>
     <button onclick="                 
-    
+      if (currentLocation === 'Beach')
+        {
+            currentLocation = 'Jungle'; //changed location to jungle
+            showScene('You are now in the Jungle.');
+        }
     ">North</button>
-    <button onclick="                 
-    
+    <button onclick=" 
+      
     ">East</button>
     <button onclick="                 
     
