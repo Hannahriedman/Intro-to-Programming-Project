@@ -23,21 +23,34 @@
       if (currentLocation === 'Beach')
         {
             currentLocation = 'Jungle'; //changed location to jungle
-            points += 10;
+            points += 5;
             showScene('You are now in the Jungle.' + 'Current Points: ' + points);
+        } else if (currentLocation === 'Cave') {
+            showScene('You walk for 20 minutes but come up to a dead end. There is no water around so you walk back to the enterence of the cave. ' + 'Current Points: ' + points);
+        }
             
-        } 
     ">North</button>
     <button onclick=" 
         if (currentLocation === 'Beach')
         {
             currentLocation = 'Cave'; //changed location to cave
-            points += 10;
-            showScene('You are now in a cave. ' + 'Current Points: ' + points);
-        }
+            points += 5;
+            showScene('You are now in a cave.There is a path to the North and to the South. ' + 'Current Points: ' + points);
+        } else if (currentLocation === 'Cave') {
+            showScene('You can not go East. There is a cave wall. ' + 'Current Points: ' + points);
+        } 
       
     ">East</button>
-    <button onclick="                 
+    <button onclick="   
+        if (currentLocation === 'Beach')
+        {
+            currentLocation = 'Ocean'; //changed location to ocean
+            points += 5;
+            showScene('You are now facing the vast ocean. ' + 'Current Points: ' + points);
+        } else if (currentLocation === 'Ocean') {
+            points = 0;
+            showScene('You start to swim and get caught in a rip tide. you are dead. ' + 'Current Points: ' + points);
+        }
     
     ">South</button>
     <button onclick="                 
