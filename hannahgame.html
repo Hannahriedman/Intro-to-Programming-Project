@@ -50,6 +50,13 @@
         } else if (currentLocation === 'Ocean') {
             points = 0;
             showScene('You start to swim and get caught in a rip tide. you are dead. ' + 'Current Points: ' + points);
+        } else if (currentLocation === 'Cave') {
+            currentLocaton = 'Waterfall'; //changed location to waterfall
+            points += 5;
+            showScene('You are at a Waterfall! Congrats! You have found fresh water!' + 'Current Points: ' + points);    
+        } else if (currentLocation === 'Jungle') {
+            currentLocation = 'Beach';
+            showScene('You are now back at the Beach. ' + 'Current Points: ' + points);         
         }
     
     ">South</button>
