@@ -33,6 +33,10 @@
             currentLocation = 'cave'; // changed location to cave
             setting('You are back at the cave enterence. ');
             yourPoints('Current Points: ' + currentPoints);
+        } else if (currentLocation === 'Ocean') {
+            currentLocation = 'Beach';
+            setting('You are now back at the Beach.');
+            yourPoints('Current Points: ' + currentPoints);
         }
             
     ">North</button>
@@ -49,6 +53,9 @@
         } else if (currentLocation === 'Waterfall') { 
             setting('There is no where else to go, the cave ends at the waterfall. ');
             yourPoints('Current Points: ' + currentPoints);
+        } else if (currentLocation === 'Ocean') {
+            setting('It does not look like there is any where to go to the east.');
+            yourPoints('Current Points: ' + currentPoints);
         }
       
     ">East</button>
@@ -61,6 +68,7 @@
             yourPoints('Current Points: ' + currentPoints);
         } else if (currentLocation === 'Ocean') {
             currentPoints = 0;
+            currentLocation = 'dead';
             setting('You start to swim and get caught in a rip tide. you are dead. ');
             yourPoints('Current Points: ' + currentPoints);
         } else if (currentLocation === 'Cave') {
@@ -83,7 +91,16 @@
          if (currentLocation === 'Waterfall') { 
             setting('There is no where else to go, the cave ends at the waterfall. ');
             yourPoints('Current Points: ' + currentPoints);
-        }
+        } else if (currentLocation === 'Cave') {
+            currentLocation = 'Beach';
+            setting('You are now back at the Beach. ');
+            yourPoints('Current Points: ' + currentPoints);         
+        } else if (currentLocation === 'Ocean') {
+            currentLocation = 'dead'
+            setting('You swim for 5 minutes before realizing a manatee is following you. You do not like manatees. You have a panic attack and drown. You are dead.');
+            currentPoints = 0;
+            yourPoints('Current Points: ' + currentPoints);
+        } 
     ">West</button>
     
 </body>
