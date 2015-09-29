@@ -12,109 +12,115 @@ function yourPoints(descrip) {
 function goNorth() {
     if (currentLocation === 'Beach')
     {
-            currentLocation = 'Jungle'; //changed location to jungle
-            currentPoints += 5;
-            setting('You are now in the Jungle.'); 
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Jungle'; //changed location to jungle
+        currentPoints += 5;
+        setting('You are now in the Jungle.'); 
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
-            setting('You walk for 20 minutes but come up to a dead end. There is no water around so you walk back to the enterence of the cave. ');
-            yourPoints('Current Points: ' + currentPoints);
+        setting('You walk for 20 minutes but come up to a dead end. There is no water around so you walk back to the enterence of the cave. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Waterfall') { 
-            currentLocation = 'Cave'; // changed location to cave
-            setting('You are back at the cave enterence. ');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Cave'; // changed location to cave
+        setting('You are back at the cave enterence. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Ocean') {
-            currentLocation = 'Beach';
-            setting('You are now back at the Beach.');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Beach';
+        setting('You are now back at the Beach.');
+        yourPoints('Current Points: ' + currentPoints);
     }  else if (currentLocation === 'Jungle') {
-            currentLocation = 'Trap';
-            setting('You walk through the Jungle for an hour you decide to take a break under a tree.\n After a few moments you notice you are sinking into the ground. There is a branch to the west and a vine to the East.');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Trap';
+        setting('You walk through the Jungle for an hour you decide to take a break under a tree.\n After a few moments you notice you are sinking into the ground. There is a branch to the west and a vine to the East.');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
-            currentLocation = 'dead';
-            currentPoints = 0;
-            setting('You try to go north but you end up sinking further into the quicksand.You are dead.');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'dead';
+        currentPoints = 0;
+        setting('You try to go north but you end up sinking further into the quicksand.You are dead.');
+        yourPoints('Current Points: ' + currentPoints);
     } 
 }
         
 function goEast() {
     if (currentLocation === 'Beach')
     {
-            currentLocation = 'Cave'; //changed location to cave
-            currentPoints += 5;
-            setting('You are now in a cave.There is a path to the North and to the South. ');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Cave'; //changed location to cave
+        currentPoints += 5;
+        setting('You are now in a cave.There is a path to the North and to the South. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
-            setting('You can not go East. There is a cave wall. ');
-            yourPoints('Current Points: ' + currentPoints);
+        setting('You can not go East. There is a cave wall. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Waterfall') { 
-            setting('There is no where else to go, the cave ends at the waterfall. ');
-            yourPoints('Current Points: ' + currentPoints);
+        setting('There is no where else to go, the cave ends at the waterfall. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Ocean') {
-            setting('It does not look like there is any where to go to the east.');
-            yourPoints('Current Points: ' + currentPoints);
+        setting('It does not look like there is any where to go to the east.');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
-            currentLocation = 'dead';
-            currentPoints = 0;
-            setting('You reach for the vine but it turns out that its a Snake! Still trapped by the quicksand, the snake attacks and you die.');
-            yourPoints('Current Points: ' + currentPoints);
-    } 
+        currentLocation = 'dead';
+        currentPoints = 0;
+        setting('You reach for the vine but it turns out that its a Snake! Still trapped by the quicksand, the snake attacks and you die.');
+        yourPoints('Current Points: ' + currentPoints);
+    } else if (currentLocation === 'Jungle') {
+        setting('Yay! You have found some bananas! They are very yummy.');
+        yourPoints('Current Points: ' + currentPoints);
+    }
 }
         
 function goSouth() {
     if (currentLocation === 'Beach')
     {
-            currentLocation = 'Ocean'; //changed location to ocean
-            currentPoints += 5;
-            setting('You are now facing the vast ocean. ');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Ocean'; //changed location to ocean
+        currentPoints += 5;
+        setting('You are now facing the vast ocean. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Ocean') {
-            currentPoints = 0;
-            currentLocation = 'dead';
-            setting('You start to swim and get caught in a rip tide. you are dead. ');
-            yourPoints('Current Points: ' + currentPoints);
+        currentPoints = 0;
+        currentLocation = 'dead';
+        setting('You start to swim and get caught in a rip tide. you are dead. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
-            currentLocation = 'Waterfall'; //changed location to waterfall
-            currentPoints += 5;
-            setting('You are at a Waterfall! Congrats! You have found fresh water!');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Waterfall'; //changed location to waterfall
+        currentPoints += 5;
+        setting('You are at a Waterfall! Congrats! You have found fresh water!');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Jungle') {
-            currentLocation = 'Beach';
-            setting('You are now back at the Beach. ');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'Beach';
+        setting('You are now back at the Beach. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Waterfall') { 
-            setting('There is no where else to go, the cave ends at the waterfall. ');
-            yourPoints('Current Points: ' + currentPoints);
+        setting('There is no where else to go, the cave ends at the waterfall. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocaton === 'Jungle') {
-            currentLocation = 'Beach';
-            setting('You are now back at the Beach. ');
-            yourPoints('Current Points: ' + currentPoints); 
+        currentLocation = 'Beach';
+        setting('You are now back at the Beach. ');
+        yourPoints('Current Points: ' + currentPoints); 
     }  else if (currentLocation === 'Trap') {
-            currentLocation = 'dead';
-            currentPoints = 0;
-            setting('You try to go south but you end up sinking further into the quicksand. You are dead.');
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'dead';
+        currentPoints = 0;
+        setting('You try to go south but you end up sinking further into the quicksand.You are dead.');
+        yourPoints('Current Points: ' + currentPoints);
     }
 }
         
 function goWest() {
     if (currentLocation === 'Waterfall') { 
-            setting('There is no where else to go, the cave ends at the waterfall. ');
-            yourPoints('Current Points: ' + currentPoints);
+        setting('There is no where else to go, the cave ends at the waterfall. ');
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
-            currentLocation = 'Beach';
-            setting('You are now back at the Beach. ');
-            yourPoints('Current Points: ' + currentPoints);         
+        currentLocation = 'Beach';
+        setting('You are now back at the Beach. ');
+        yourPoints('Current Points: ' + currentPoints);         
     } else if (currentLocation === 'Ocean') {
-            currentLocation = 'dead'
-            setting('You swim for 5 minutes before realizing a manatee is following you. You do not like manatees. You have a panic attack and drown. You are dead.');
-            currentPoints = 0;
-            yourPoints('Current Points: ' + currentPoints);
+        currentLocation = 'dead'
+        setting('You swim for 5 minutes before realizing a manatee is following you. You do not like manatees. You have a panic attack and drown. You are dead.');
+        currentPoints = 0;
+        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
-            currentLocation = 'Jungle';
-            setting('You grab onto the branch and pull yourself out of the quicksand. You walk back south to the jungle enterence.');
-            yourPoints('Current Points: ' + currentPoints); 
+        currentLocation = 'Jungle';
+        setting('You grab onto the branch and pull yourself out of the quicksand. You walk back south to the jungle enterence.');
+        yourPoints('Current Points: ' + currentPoints); 
+    } else if (currentLocation === 'Jungle') {
+        setting('After a 5 minute walk you come upon a large tree. You climb ontop of it and see what looks like a waterfall in the distance. it appears to be to the east but you can not acess it from here. You walk back to the jungle entrance. \n');
+        yourPoints('Current Points: ' + currentPoints); 
     }
 }
