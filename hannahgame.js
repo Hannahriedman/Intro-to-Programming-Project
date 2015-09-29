@@ -63,6 +63,10 @@ function goEast() {
     } else if (currentLocation === 'Jungle') {
         setting('Yay! You have found some bananas! They are very yummy.');
         yourPoints('Current Points: ' + currentPoints);
+    } else if (currentLocation === 'Cliffs') {
+        currentLocation = 'Beach';
+        setting('You are now back at the Beach.');
+        yourPoints('Current Points: ' + currentPoints);
     }
 }
         
@@ -121,6 +125,11 @@ function goWest() {
         yourPoints('Current Points: ' + currentPoints); 
     } else if (currentLocation === 'Jungle') {
         setting('After a 5 minute walk you come upon a large tree. You climb ontop of it and see what looks like a waterfall in the distance. it appears to be to the east but you can not acess it from here. You walk back to the jungle entrance. \n');
+        yourPoints('Current Points: ' + currentPoints); 
+    } else if (currentLocation === 'Beach') {
+        currentLocation = 'Cliffs';
+        currentPoints += 5;
+        setting('You are now at the rocky cliffs! Be careful!');
         yourPoints('Current Points: ' + currentPoints); 
     }
 }
