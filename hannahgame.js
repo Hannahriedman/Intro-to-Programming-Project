@@ -36,7 +36,14 @@ function goNorth() {
         currentPoints = 0;
         setting('You try to go north but you end up sinking further into the quicksand.You are dead.');
         yourPoints('Current Points: ' + currentPoints);
-    } 
+    } else if (currentLocation === 'Cliffs') {
+        setting('You can see the whole island from here. To the north you see a Jungle, maybe there will be water or food there.\n');
+        yourPoints('Current Points: ' + currentPoints);
+    } else if (currentLocation === 'SecretCave') {
+        currentLocation = 'Cliffs';
+        setting('After a strenious climb, you make it back up the cliffs.');
+        yourPoints('Current Points: ' + currentPoints);
+    }
 }
         
 function goEast() {
@@ -67,6 +74,11 @@ function goEast() {
         currentLocation = 'Beach';
         setting('You are now back at the Beach.');
         yourPoints('Current Points: ' + currentPoints);
+    } else if(currentLocation === 'SecretCave') {
+        currentLocation = 'Waterfall';
+        currentPoints += 5;
+        setting('Walking for over an hour in the dark and wet cave you find a waterfall! Congrats you have found water! Once you reach the waterfall, the path you took caves in.');
+        yourPoints('Current Points: ' + currentPoints);
     }
 }
         
@@ -94,14 +106,22 @@ function goSouth() {
     } else if (currentLocation === 'Waterfall') { 
         setting('There is no where else to go, the cave ends at the waterfall. ');
         yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocaton === 'Jungle') {
+    } else if (currentLocation === 'Jungle') {
         currentLocation = 'Beach';
         setting('You are now back at the Beach. ');
         yourPoints('Current Points: ' + currentPoints); 
-    }  else if (currentLocation === 'Trap') {
+    } else if (currentLocation === 'Trap') {
         currentLocation = 'dead';
         currentPoints = 0;
         setting('You try to go south but you end up sinking further into the quicksand.You are dead.');
+        yourPoints('Current Points: ' + currentPoints);
+    } else if (currentLocation === 'Cliffs') {
+        setting('The cliffs drop off into the ocean to the south. You decide to climb down the cliffs and you find an enterance to a cave.');
+        currentLocation = 'SecretCave';
+        currentPoints += 5;
+        yourPoints('Current Points: ' + currentPoints);
+    } else if (currentLocation === 'SecretCave') {
+        setting('There is a cave wall you cannot go that way.');
         yourPoints('Current Points: ' + currentPoints);
     }
 }
@@ -115,7 +135,7 @@ function goWest() {
         setting('You are now back at the Beach. ');
         yourPoints('Current Points: ' + currentPoints);         
     } else if (currentLocation === 'Ocean') {
-        currentLocation = 'dead'
+        currentLocation = 'dead';
         setting('You swim for 5 minutes before realizing a manatee is following you. You do not like manatees. You have a panic attack and drown. You are dead.');
         currentPoints = 0;
         yourPoints('Current Points: ' + currentPoints);
@@ -131,5 +151,13 @@ function goWest() {
         currentPoints += 5;
         setting('You are now at the rocky cliffs! Be careful!');
         yourPoints('Current Points: ' + currentPoints); 
+    } else if (currentLocation === 'SecretCave') {
+        setting('There is a cave wall you cannot go that way.');
+        yourPoints('Current Points: ' + currentPoints);
+    } else if (currentLocation === 'Cliffs') {
+        currentLocation = 'dead';
+        currentPoints = 0;
+        setting('You should have been more careful. You try to get a better look at the edge of the cliffs and you fall to your death.');
+        yourPoints('Current Points: ' + currentPoints);
     }
 }
