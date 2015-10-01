@@ -1,5 +1,11 @@
 var currentLocation = "Beach";
 var currentPoints = 0;
+var trackerO = 0;
+var trackerJ = 0;
+var trackerCa = 0;
+var trackerCl = 0;
+var trackerW = 0;
+var trackerS = 0;
         
 function setting(descrip) {
     document.getElementById("scene").innerHTML = descrip;
@@ -13,7 +19,10 @@ function goNorth() {
     if (currentLocation === 'Beach')
     {
         currentLocation = 'Jungle'; //changed location to jungle
-        currentPoints += 5;
+        while (trackerJ === 0){
+            currentPoints += 5;
+            trackerJ = 1;
+        }
         setting('You are now in the Jungle.'); 
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
@@ -21,7 +30,11 @@ function goNorth() {
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Waterfall') { 
         currentLocation = 'Cave'; // changed location to cave
-        setting('You are back at the cave entrance.');
+        while (trackerCa === 0){
+            currentPoints += 5;
+            trackerCa = 1;
+        }
+        setting('You are now at the cave entrance.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Ocean') {
         currentLocation = 'Beach'; // changed location to beach
@@ -50,7 +63,10 @@ function goEast() {
     if (currentLocation === 'Beach')
     {
         currentLocation = 'Cave'; //changed location to cave
-        currentPoints += 5;
+        while (trackerCa === 0){
+            currentPoints += 5;
+            trackerCa = 1;
+        }
         setting('You are now in a cave.There is a path to the North and to the South. ');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
@@ -76,7 +92,10 @@ function goEast() {
         yourPoints('Current Points: ' + currentPoints);
     } else if(currentLocation === 'SecretCave') {
         currentLocation = 'Waterfall'; // changed location to waterfall
-        currentPoints += 5;
+        while (trackerW === 0){
+            currentPoints += 5;
+            trackerW = 1;
+        }
         setting('Walking for over an hour in the dark and wet cave you find a waterfall! Congrats you have found water! Once you reach the waterfall, the path you took caves in.');
         yourPoints('Current Points: ' + currentPoints);
     }
@@ -86,7 +105,10 @@ function goSouth() {
     if (currentLocation === 'Beach')
     {
         currentLocation = 'Ocean'; //changed location to ocean
-        currentPoints += 5;
+        while (trackerO === 0){
+            currentPoints += 5;
+            trackerO = 1;
+        }
         setting('You are now facing the vast ocean. You do not have a boat and it looks pretty dangerous.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Ocean') {
@@ -96,7 +118,10 @@ function goSouth() {
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cave') {
         currentLocation = 'Waterfall'; //changed location to waterfall
-        currentPoints += 5;
+        while (trackerW === 0){
+            currentPoints += 5;
+            trackerW = 1;
+        }
         setting('You are at a Waterfall! Congrats! You have found fresh water!');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Jungle') {
@@ -114,7 +139,10 @@ function goSouth() {
     } else if (currentLocation === 'Cliffs') {
         setting('The cliffs drop off into the ocean to the south. You decide to climb down the cliffs and you find an enterance to a cave.');
         currentLocation = 'SecretCave'; // changed location to secret cave
-        currentPoints += 5;
+        while (trackerS === 0){
+            currentPoints += 5;
+            trackerS = 1;
+        }
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'SecretCave') {
         setting('There is a cave wall you cannot go that way.');
@@ -144,7 +172,10 @@ function goWest() {
         yourPoints('Current Points: ' + currentPoints); 
     } else if (currentLocation === 'Beach') {
         currentLocation = 'Cliffs'; // changed location to Cliffs
-        currentPoints += 5;
+        while (trackerCl === 0){
+            currentPoints += 5;
+            trackerCl = 1;
+        }
         setting('You are now at the rocky cliffs! Be careful!');
         yourPoints('Current Points: ' + currentPoints); 
     } else if (currentLocation === 'SecretCave') {
