@@ -50,7 +50,7 @@ function goNorth() {
         setting('You try to go north but you end up sinking further into the quicksand.You are dead.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cliffs') {
-        setting('You can see the whole island from here. To the north you see a Jungle, maybe there will be water or food there. You go back to the entrance of the Jungle.\n');
+        setting('You can see the whole island from here. To the north you see a Jungle, maybe there will be water or food there. You go back to the entrance of Cliffs.\n');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'SecretCave') {
         currentLocation = 'Cliffs'; // changed location to cliffs
