@@ -73,16 +73,7 @@ function goEast() {
         setting(cave(''));
         yourPoints('Current Points: ' + currentPoints);
             
-    } else if (currentLocation === 'Cave') {
-        setting('You can not go East. There is a cave wall. ');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Waterfall') { 
-        setting('There is no where else to go, the cave ends at the waterfall. ');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Ocean') {
-        setting('It does not look like there is any where to go to the east.');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Trap') {
+    }  else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
         setting('You reach for the vine but it turns out that its a Snake! Still trapped by the quicksand, the snake attacks and you die.');
@@ -114,7 +105,7 @@ function goSouth() {
                 currentPoints += 5;
                 trackerO = 1;
             } 
-        setting('You are now facing the vast ocean. You do not have a boat  and it looks pretty dangerous.');
+        setting(ocean(''));
         yourPoints('Current Points: ' + currentPoints);
             
     } else if (currentLocation === 'Ocean') {
@@ -135,9 +126,6 @@ function goSouth() {
         currentLocation = 'Beach'; // changed loaction to Beach
         setting(beach(''));
         yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Waterfall') { 
-        setting('There is no where else to go, the cave ends at the waterfall. ');
-        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
@@ -152,17 +140,11 @@ function goSouth() {
         setting(secretCave(''));
         yourPoints('Current Points: ' + currentPoints);
             
-    } else if (currentLocation === 'SecretCave') {
-        setting('There is a cave wall you cannot go that way.');
-        yourPoints('Current Points: ' + currentPoints);
-    }
+    } 
 }
         
 function goWest() {
-    if (currentLocation === 'Waterfall') { 
-        setting('There is no where else to go, the cave ends at the waterfall. ');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Cave') {
+    if  (currentLocation === 'Cave') {
         currentLocation = 'Beach'; // changed location to beach
         setting(beach(''));
         yourPoints('Current Points: ' + currentPoints);         
@@ -188,10 +170,6 @@ function goWest() {
         
         yourPoints('Current Points: ' + currentPoints); 
             
-    } else if (currentLocation === 'SecretCave'){
-        diable("goWest();")
-        setting('There is a cave wall you cannot go that way.');
-        yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cliffs') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
@@ -199,6 +177,7 @@ function goWest() {
         yourPoints('Current Points: ' + currentPoints);
     }
 }
+
 function input() {
     var userInput = document.getElementById('command').value;
     alert('You entered ' + userInput);
@@ -223,38 +202,75 @@ function input() {
             alert('Invaild command, try again!');
     }
 }
+
 function beach(message){
     var message = 'You are now back at the Beach.';
+    enable(4);
+    enable(3);
+    enable(2);
+    enable(1);
     return message;
 }
 function cave(message) {
     var message = 'You are now in a cave.There is a path to the North and to the South. ';
+    enable(4);
+    enable(3);
+    disable(2);
+    enable(1);
     return message;
 }
 function cliffs(message) {
     var message = 'You are now at the rocky cliffs! Be careful!';
+    enable(4);
+    enable(3);
+    enable(2);
+    enable(1);
     return message;
 }
 function secretCave(message) {
     var message = 'The cliffs drop off into the ocean to the south. You decide to climb down the cliffs and you find an enterance to a cave.';
+    disable(4);
+    disable(3);
+    enable(2);
+    enable(1);
     return message;
 }
 function ocean(message) {
     var message = 'You are now facing the vast ocean. You do not have a boat  and it looks pretty dangerous.';
+    enable(4);
+    enable(3);
+    disable(2);
+    enable(1);
     return message;
 }
 function jungle(message) {
     var message ='You are now in the Jungle.';
+    enable(4);
+    enable(3);
+    enable(2);
+    enable(1);
     return message;
 } 
 function waterfall(message) {
     var message = 'You are at a Waterfall! Congrats! You have found fresh water!';
+    disable(4);
+    disable(3);
+    disable(2);
+    enable(1);
     return message;
 }
 function trap(message) {
     var message = 'You walk through the Jungle for an hour you decide to take a break under a tree.\n After a few moments you notice you are sinking into the ground. There is a branch to the west and a vine to the East.';
+    enable(4);
+    disable(3);
+    enable(2);
+    enable(1);
     return message;
 }
+
 function disable(mybtn) {
-    document.getElementById('mybtn').disabled = true;
+    document.getElementById(mybtn).disabled = true;
+}
+function enable(mybtn) {
+    document.getElementById(mybtn).disabled = false;
 }
