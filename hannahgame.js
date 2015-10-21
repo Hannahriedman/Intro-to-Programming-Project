@@ -204,15 +204,19 @@ function input() {
     alert('You entered ' + userInput);
     switch (userInput) {
         case 'N':
+        case 'n':
             goNorth();
             break;
         case 'E':
+        case 'e':
             goEast();
             break;
         case 'S':
+        case 's':
             goSouth();
             break;
         case 'W':
+        case 'w':
             goWest();
             break;
         default:
