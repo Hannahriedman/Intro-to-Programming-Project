@@ -188,7 +188,8 @@ function goWest() {
         
         yourPoints('Current Points: ' + currentPoints); 
             
-    } else if (currentLocation === 'SecretCave') {
+    } else if (currentLocation === 'SecretCave'){
+        diable("goWest();")
         setting('There is a cave wall you cannot go that way.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cliffs') {
@@ -198,7 +199,26 @@ function goWest() {
         yourPoints('Current Points: ' + currentPoints);
     }
 }
-
+function input() {
+    var userInput = document.getElementById('command').value;
+    alert('You entered ' + userInput);
+    switch (userInput) {
+        case 'N':
+            goNorth();
+            break;
+        case 'E':
+            goEast();
+            break;
+        case 'S':
+            goSouth();
+            break;
+        case 'W':
+            goWest();
+            break;
+        default:
+            alert('Invaild command, try again!');
+    }
+}
 function beach(message){
     var message = 'You are now back at the Beach.';
     return message;
@@ -230,4 +250,7 @@ function waterfall(message) {
 function trap(message) {
     var message = 'You walk through the Jungle for an hour you decide to take a break under a tree.\n After a few moments you notice you are sinking into the ground. There is a branch to the west and a vine to the East.';
     return message;
+}
+function disable(mybtn) {
+    document.getElementById('mybtn').disabled = true;
 }
