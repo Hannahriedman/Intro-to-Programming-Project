@@ -28,7 +28,8 @@ function goNorth() {
         yourPoints('Current Points: ' + currentPoints);
             
     } else if (currentLocation === 'Cave') {
-        setting('You walk for 20 minutes but come up to a dead end. There is no water around so you walk back to the entrance of the cave. ');
+        setting('You walk for 20 minutes but come up to a dead end.' +
+'There is no water around so you walk back to the entrance of the cave. ');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Waterfall') { 
         currentLocation = 'Cave'; // changed location to cave
@@ -50,10 +51,13 @@ function goNorth() {
     } else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
-        setting('You try to go north but you end up sinking further into the quicksand.You are dead.');
+        setting('You try to go north but you end up sinking further' +
+' into the quicksand.You are dead.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cliffs') {
-        setting('You can see the whole island from here. To the north you see a Jungle, maybe there will be water or food there. You go back to the entrance of Cliffs.\n');
+        setting('You can see the whole island from here.' + 
+'To the north you see a Jungle, maybe there will be water or food there.' +
+'You go back to the entrance of Cliffs.\n');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'SecretCave') {
         currentLocation = 'Cliffs'; // changed location to cliffs
@@ -76,7 +80,8 @@ function goEast() {
     }  else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
-        setting('You reach for the vine but it turns out that its a Snake! Still trapped by the quicksand, the snake attacks and you die.');
+        setting('You reach for the vine but it turns out that its a Snake!' + 
+'Still trapped by the quicksand, the snake attacks and you die.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Jungle') {
         setting('Yay! You have found some bananas! They are very yummy.');
@@ -129,7 +134,8 @@ function goSouth() {
     } else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
-        setting('You try to go south but you end up sinking further into the quicksand.You are dead.');
+        setting('You try to go south but you end up sinking further ' + 
+'into the quicksand.You are dead.');
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Cliffs') {
         currentLocation = 'SecretCave'; // changed location to secret cave
@@ -150,15 +156,21 @@ function goWest() {
         yourPoints('Current Points: ' + currentPoints);         
     } else if (currentLocation === 'Ocean') {
         currentLocation = 'dead'; // end of game for player
-        setting('You swim for 5 minutes before realizing a manatee is following you. You do not like manatees. You have a panic attack and drown. You are dead.');
+        setting('You swim for 5 minutes before realizing a manatee ' + 
+'is following you. You do not like manatees. You have a panic ' + 
+'attack and drown. You are dead.');
         currentPoints = 0;
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
         currentLocation = 'Jungle'; // changed location to jungle
-        setting('You grab onto the branch and pull yourself out of the quicksand. You walk back south to the jungle enterence.');
+        setting('You grab onto the branch and pull yourself ' + 
+'out of the quicksand. You walk back south to the jungle enterence.');
         yourPoints('Current Points: ' + currentPoints); 
     } else if (currentLocation === 'Jungle') {
-        setting('After a 5 minute walk you come upon a large tree. You climb ontop of it and see what looks like a waterfall in the distance. it appears to be to the east but you can not acess it from here. You walk back to the jungle entrance. \n');
+        setting('After a 5 minute walk you come upon a large tree.' + 
+'You climb ontop of it and see what looks like a waterfall in the distance.' + 
+'it appears to be to the east but you can not acess it from here.' + 
+'You walk back to the jungle entrance. \n');
         yourPoints('Current Points: ' + currentPoints); 
     } else if (currentLocation === 'Beach') {
         currentLocation = 'Cliffs'; // changed location to Cliffs
@@ -173,7 +185,8 @@ function goWest() {
     } else if (currentLocation === 'Cliffs') {
         currentLocation = 'dead'; // end of game for player
         currentPoints = 0;
-        setting('You should have been more careful. You try to get a better look at the edge of the cliffs and you fall to your death.');
+        setting('You should have been more careful. You try to ' + 
+'get a better look at the edge of the cliffs and you fall to your death.');
         yourPoints('Current Points: ' + currentPoints);
     }
 }
@@ -203,6 +216,7 @@ function input() {
     }
 }
 
+// functions for locations
 function beach(message){
     var message = 'You are now back at the Beach.';
     enable(4);
@@ -228,7 +242,8 @@ function cliffs(message) {
     return message;
 }
 function secretCave(message) {
-    var message = 'The cliffs drop off into the ocean to the south. You decide to climb down the cliffs and you find an enterance to a cave.';
+    var message = 'The cliffs drop off into the ocean to the south.' + 
+'You decide to climb down the cliffs and you find an enterance to a cave.';
     disable(4);
     disable(3);
     enable(2);
@@ -236,7 +251,8 @@ function secretCave(message) {
     return message;
 }
 function ocean(message) {
-    var message = 'You are now facing the vast ocean. You do not have a boat  and it looks pretty dangerous.';
+    var message = 'You are now facing the vast ocean. You do not ' + 
+'have a boat  and it looks pretty dangerous.';
     enable(4);
     enable(3);
     disable(2);
@@ -260,7 +276,9 @@ function waterfall(message) {
     return message;
 }
 function trap(message) {
-    var message = 'You walk through the Jungle for an hour you decide to take a break under a tree.\n After a few moments you notice you are sinking into the ground. There is a branch to the west and a vine to the East.';
+    var message = 'You walk through the Jungle for an hour you decide ' +
+'to take a break under a tree.\n After a few moments you notice you ' + 
+'are sinking into the ground. There is a branch to the west and a vine to the East.';
     enable(4);
     disable(3);
     enable(2);
@@ -268,6 +286,7 @@ function trap(message) {
     return message;
 }
 
+// functions for enable/disable buttons
 function disable(mybtn) {
     document.getElementById(mybtn).disabled = true;
 }
