@@ -115,7 +115,7 @@ function goEast() {
 }
         
 function goSouth() {
-    switch
+    switch (currentLocation){
         case 'Beach':
                 currentLocation = 'Ocean'; //changed location to ocean
                 if (trackerO === 0) {
@@ -161,11 +161,12 @@ function goSouth() {
                 setting(secretCave());
                 yourPoints('Current Points: ' + currentPoints);
                 break;
+}
     
 }
         
 function goWest() {
-    switch 
+    switch (currentLocation){
         case 'Cave':
                currentLocation = 'Beach'; // changed location to beach
                 setting(beach(''));
@@ -209,7 +210,7 @@ function goWest() {
                 yourPoints('Current Points: ' + currentPoints);
                 break;
     
-        
+    }
 }
 
 function input() {
