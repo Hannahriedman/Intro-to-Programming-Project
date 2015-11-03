@@ -210,6 +210,22 @@ function input() {
         case 'w':
             goWest();
             break;
+        case 'T':
+        case 't':
+            take();
+            break;
+        case 'I':
+        case 'i':
+            inventory();
+            break;
+        case 'H':
+        case 'h':
+            help();
+            break;
+        case 'P':
+        case 'p':
+            prevous();
+            break;
         default:
             setting('Invaild command, try again!');
     }
