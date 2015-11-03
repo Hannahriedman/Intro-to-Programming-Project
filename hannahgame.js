@@ -24,7 +24,7 @@ function goNorth() {
                 currentPoints += 5;
                 trackerJ = 1;
             } 
-        setting(jungle('')); 
+        setting(jungle()); 
         yourPoints('Current Points: ' + currentPoints);
             
     } else if (currentLocation === 'Cave') {
@@ -37,16 +37,16 @@ function goNorth() {
                 currentPoints += 5;
                 trackerCa = 1;
             } 
-        setting(cave(''));
+        setting(cave());
         yourPoints('Current Points: ' + currentPoints);
         
         } else if (currentLocation === 'Ocean') {
         currentLocation = 'Beach'; // changed location to beach
-        setting(beach(''));
+        setting(beach());
         yourPoints('Current Points: ' + currentPoints);
     }  else if (currentLocation === 'Jungle') {
         currentLocation = 'Trap'; // changed location to trap
-        setting(trap(''));
+        setting(trap());
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
@@ -61,7 +61,7 @@ function goNorth() {
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'SecretCave') {
         currentLocation = 'Cliffs'; // changed location to cliffs
-        setting(cliffs(''));
+        setting(cliffs());
         yourPoints('Current Points: ' + currentPoints);
     }
 }
@@ -74,7 +74,7 @@ function goEast() {
                 currentPoints += 5;
                 trackerCa = 1;
             } 
-        setting(cave(''));
+        setting(cave());
         yourPoints('Current Points: ' + currentPoints);
             
     }  else if (currentLocation === 'Trap') {
@@ -96,7 +96,7 @@ function goEast() {
                 currentPoints += 5;
                 trackerW = 1;
             } 
-        setting('Walking for over an hour in the dark and wet cave you find a waterfall!' + waterfall(''));
+        setting('Walking for over an hour in the dark and wet cave you find a waterfall!' + waterfall());
         yourPoints('Current Points: ' + currentPoints);
             
     }
@@ -110,7 +110,7 @@ function goSouth() {
                 currentPoints += 5;
                 trackerO = 1;
             } 
-        setting(ocean(''));
+        setting(ocean());
         yourPoints('Current Points: ' + currentPoints);
             
     } else if (currentLocation === 'Ocean') {
@@ -124,12 +124,12 @@ function goSouth() {
                 currentPoints += 5;
                 trackerW = 1;
             } 
-        setting(waterfall(''));
+        setting(waterfall());
         yourPoints('Current Points: ' + currentPoints);
             
     } else if (currentLocation === 'Jungle') {
         currentLocation = 'Beach'; // changed loaction to Beach
-        setting(beach(''));
+        setting(beach());
         yourPoints('Current Points: ' + currentPoints);
     } else if (currentLocation === 'Trap') {
         currentLocation = 'dead'; // end of game for player
@@ -143,7 +143,7 @@ function goSouth() {
                 currentPoints += 5;
                 trackerS = 1;
             } 
-        setting(secretCave(''));
+        setting(secretCave());
         yourPoints('Current Points: ' + currentPoints);
             
     } 
@@ -178,7 +178,7 @@ function goWest() {
                 currentPoints += 5;
                 trackerCl = 1;
             } 
-        setting(cliffs(''));
+        setting(cliffs());
         
         yourPoints('Current Points: ' + currentPoints); 
             
@@ -193,7 +193,6 @@ function goWest() {
 
 function input() {
     var userInput = document.getElementById('command').value;
-    alert('You entered ' + userInput);
     switch (userInput) {
         case 'N':
         case 'n':
@@ -212,77 +211,77 @@ function input() {
             goWest();
             break;
         default:
-            alert('Invaild command, try again!');
+            setting('Invaild command, try again!');
     }
 }
 
 // functions for locations
-function beach(message){
+function beach(){
     var message = 'You are now back at the Beach.';
-    enable(4);
-    enable(3);
-    enable(2);
-    enable(1);
+    enable('W');
+    enable('S');
+    enable('E');
+    enable('N');
     return message;
 }
-function cave(message) {
+function cave() {
     var message = 'You are now in a cave.There is a path to the North and to the South. ';
-    enable(4);
-    enable(3);
-    disable(2);
-    enable(1);
+    enable('W');
+    enable('S');
+    disable('E');
+    enable('N');
     return message;
 }
-function cliffs(message) {
+function cliffs() {
     var message = 'You are now at the rocky cliffs! Be careful!';
-    enable(4);
-    enable(3);
-    enable(2);
-    enable(1);
+    enable('W');
+    enable('S');
+    enable('E');
+    enable('N');
     return message;
 }
-function secretCave(message) {
+function secretCave() {
     var message = 'The cliffs drop off into the ocean to the south.' + 
 'You decide to climb down the cliffs and you find an enterance to a cave.';
-    disable(4);
-    disable(3);
-    enable(2);
-    enable(1);
+    disable('W');
+    disable('S');
+    enable('E');
+    enable('N');
     return message;
 }
-function ocean(message) {
+function ocean() {
     var message = 'You are now facing the vast ocean. You do not ' + 
 'have a boat  and it looks pretty dangerous.';
-    enable(4);
-    enable(3);
-    disable(2);
-    enable(1);
+    enable('W');
+    enable('S');
+    disable('E');
+    enable('N');
     return message;
 }
-function jungle(message) {
+function jungle() {
     var message ='You are now in the Jungle.';
-    enable(4);
-    enable(3);
-    enable(2);
-    enable(1);
+    enable('W');
+    enable('S');
+    enable('E');
+    enable('N');
     return message;
 } 
-function waterfall(message) {
+function waterfall() {
     var message = 'You are at a Waterfall! Congrats! You have found fresh water!';
-    disable(4);
-    disable(3);
-    disable(2);
-    enable(1);
+    disable('W');
+    disable('S');
+    disable('E');
+    enable('N');
     return message;
 }
-function trap(message) {
+function trap() {
     var message = 'You walk through the Jungle for an hour you decide ' +
 'to take a break under a tree.\n After a few moments you notice you ' + 
 'are sinking into the ground. There is a branch to the west and a vine to the East.';
-    enable(4);
-    disable(3);
-    enable(2);
-    enable(1);
+    enable('W');
+    enable('S');
+    enable('E');
+    enable('N');
     return message;
 }
 
