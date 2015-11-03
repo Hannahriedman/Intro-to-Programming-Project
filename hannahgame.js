@@ -17,53 +17,61 @@ function yourPoints(descrip) {
 
 // functions for buttons 
 function goNorth() {
-    if (currentLocation === 'Beach')
-    {
-        currentLocation = 'Jungle'; //changed location to jungle
-            if (trackerJ === 0) {
+    switch (currentLocation) {
+        case 'Beach':
+                currentLocation = 'Jungle';
+                if (trackerJ === 0) {
                 currentPoints += 5;
                 trackerJ = 1;
-            } 
-        setting(jungle()); 
-        yourPoints('Current Points: ' + currentPoints);
-            
-    } else if (currentLocation === 'Cave') {
-        setting('You walk for 20 minutes but come up to a dead end.' +
-'There is no water around so you walk back to the entrance of the cave. ');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Waterfall') { 
-        currentLocation = 'Cave'; // changed location to cave
-            if (trackerCa === 0) {
+                } 
+                setting(jungle());
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+        case 'Cave':
+                setting('You walk for 20 minutes but come up to a dead end.' +
+                        'There is no water around so you walk back to the entrance of the cave. ');
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+        case 'Waterfall':
+                currentLocation = 'Cave'; // changed location to cave
+                if (trackerCa === 0) {
                 currentPoints += 5;
                 trackerCa = 1;
-            } 
-        setting(cave());
-        yourPoints('Current Points: ' + currentPoints);
-        
-        } else if (currentLocation === 'Ocean') {
-        currentLocation = 'Beach'; // changed location to beach
-        setting(beach());
-        yourPoints('Current Points: ' + currentPoints);
-    }  else if (currentLocation === 'Jungle') {
-        currentLocation = 'Trap'; // changed location to trap
-        setting(trap());
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Trap') {
-        currentLocation = 'dead'; // end of game for player
-        currentPoints = 0;
-        setting('You try to go north but you end up sinking further' +
-' into the quicksand.You are dead.');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'Cliffs') {
-        setting('You can see the whole island from here.' + 
-'To the north you see a Jungle, maybe there will be water or food there.' +
-'You go back to the entrance of Cliffs.\n');
-        yourPoints('Current Points: ' + currentPoints);
-    } else if (currentLocation === 'SecretCave') {
-        currentLocation = 'Cliffs'; // changed location to cliffs
-        setting(cliffs());
-        yourPoints('Current Points: ' + currentPoints);
+                } 
+                setting(cave());
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+        case 'Ocean':
+                currentLocation = 'Beach'; // changed location to beach
+                setting(beach());
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+        case 'Jungle':
+                currentLocation = 'Trap'; // changed location to trap
+                setting(trap());
+                yourPoints('Current Points: ' + currentPoints);  
+                break;
+        case 'Trap':
+                currentLocation = 'dead'; // end of game for player
+                currentPoints = 0;
+                setting('You try to go north but you end up sinking further' +
+                        ' into the quicksand.You are dead.');
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+        case 'Cliffs':
+                setting('You can see the whole island from here.' + 
+                        'To the north you see a Jungle, maybe there will be water or food there.' +
+                        'You go back to the entrance of Cliffs.\n');
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+        case 'SecretCave':
+                currentLocation = 'Cliffs'; // changed location to cliffs
+                setting(cliffs());
+                yourPoints('Current Points: ' + currentPoints);
+                break;
+    
     }
+    
 }
         
 function goEast() {
@@ -229,6 +237,22 @@ function input() {
         default:
             setting('Invaild command, try again!');
     }
+}
+
+function take() {
+    
+}
+
+function inventory() {
+    
+}
+
+function help() {
+    
+}
+
+function previous() {
+    
 }
 
 // functions for locations
