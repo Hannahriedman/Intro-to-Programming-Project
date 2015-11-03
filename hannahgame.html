@@ -11,10 +11,12 @@
     <h1>Where's the Water?</h1>
     <div id="scene">You are on a deserted island. Your plane crashed,and you are the only survior. Currently you are on the Beach.To the North is the Jungle, to the East is a Cave, to the South is the Ocean, and to the West is the Cliffs. Find a source of water before you become dehydrated. </div>
     <div id="points">Current points: 0</div>
-    <button onclick="goNorth();">North</button>
-    <button onclick="goEast();">East</button>
-    <button onclick="goSouth();">South</button>
-    <button onclick="goWest();">West</button>
+    <input id="command" type="text"/>
+    <button onclick="input();">Go</button>
+    <button id=N onclick="goNorth();">North</button>
+    <button id=E onclick="goEast();">East</button>
+    <button id=S onclick="goSouth();">South</button>
+    <button id=W onclick="goWest();">West</button>
     <a href="mailto:Hannah.Riedman1@marist.edu">Email me for help</a>
     <img src="map.png" width="250" height="200"> 
     <!-- http://360investmentadvice.com/home/compass-symbol/ for image and then edited by me-->
