@@ -10,13 +10,21 @@ var trackerS = 0;
 var trackerT = 0;
 var trackerSh = 0;
 var trackerB = 0;
-        
+var item1 = '';
+var item2 = '';
+var item3 = '';
+var inventory1 = ['Waterbottle'];
+var breadcrumbTrail = [];
+
 function setting(descrip) {
     document.getElementById("scene").innerHTML = descrip;
 } 
 function yourPoints(descrip) {
     document.getElementById("points").innerHTML = descrip;   
 } 
+function extraInfo(descrip) {
+    document.getElementById("info").innerHTML = descrip;
+}
 
 // functions for buttons 
 function goNorth() {
@@ -102,6 +110,8 @@ function goEast() {
                     trackerB = 1;
                 } 
                 setting(bananaTree());
+                var banana = true;
+                inventory(banana);
                 yourPoints('Current Points: ' + currentPoints);
                 break;
         case 'Cliffs':
@@ -186,6 +196,7 @@ function goSouth() {
                     trackerT = 1;
                 }
                 setting('You fall down a steep hill so you cannot go back up north. ' + tree());
+               
                 yourPoints('Current Points: ' + currentPoints);
                 break;
 }
@@ -292,11 +303,44 @@ function input() {
 }
 
 function take() {
-    
+    switch (currentLocation) {
+        case 'Shack':
+                if (trackerSh === 1) {
+                item1 = 'Knife';
+                inventory1.push(item1);
+                extraInfo('You have taken a '+item1);
+                trackerSh = 2;
+                } else {
+                extraInfo('You have already taken the ' + item1);
+                }
+                break;
+        case 'BananaTree':
+                if (trackerB === 1) {
+                item2 = 'Banana';
+                inventory1.push(item2);
+                extraInfo('You have taken a '+item2);
+                trackerB = 2;
+                } else {
+                extraInfo('You have already taken the ' + item2);
+                }
+                break;
+        case 'Waterfall':
+                if (trackerW === 1) {
+                item3 = 'Water';
+                inventory1.push(item3);
+                extraInfo('You have taken a '+item3);
+                trackerW = 2;
+                } else {
+                extraInfo('You have already taken the ' + item3);
+                }
+                break;
+        default:
+                extraInfo('There is no item here.');
+    }
 }
 
 function inventory() {
-    
+    extraInfo('Currently you have: ' + inventory1);
 }
 
 function help() {
@@ -359,7 +403,7 @@ function jungle() {
     return message;
 } 
 function waterfall() {
-    var message = 'You are at a Waterfall! Congrats! You have found fresh water!';
+    var message = 'You are at a Waterfall! Congrats! You have found fresh water! Take some water!';
     disable('W');
     disable('S');
     disable('E');
@@ -390,7 +434,7 @@ function tree() {
 function shack() {
     var message = 'You grab onto the branch and pull yourself ' + 
                   'out of the quicksand. You walk further into the jungle before ' +
-                  'discovering a shack. It looks very creepy.';
+                  'discovering a shack. It looks very creepy.There is an old knife there.';
     disable('W');
     enable('S'); // go to tree
     enable('E'); // go back to jungle entrance 
@@ -398,7 +442,7 @@ function shack() {
     return message;
 }
 function bananaTree() {
-    var message = 'Yay! You have found some bananas! They are very yummy.';
+    var message = 'Yay! You have found some bananas!  Take some, you might be hungry later!';
     enable('W'); // back to jungle entracne 
     disable('S');
     disable('E');
