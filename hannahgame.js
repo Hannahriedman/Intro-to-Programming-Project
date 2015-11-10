@@ -125,7 +125,7 @@ function goEast() {
                     currentPoints += 5;
                     trackerW = 1;
                 } 
-                setting('Walking for over an hour in the dark and wet cave you find a waterfall!' +                             waterfall());
+                setting('Walking for over an hour in the dark and wet cave you find a waterfall!' +                     waterfall());
                 yourPoints('Current Points: ' + currentPoints);
                 break;
         case 'Tree':
@@ -196,7 +196,6 @@ function goSouth() {
                     trackerT = 1;
                 }
                 setting('You fall down a steep hill so you cannot go back up north. ' + tree());
-               
                 yourPoints('Current Points: ' + currentPoints);
                 break;
 }
