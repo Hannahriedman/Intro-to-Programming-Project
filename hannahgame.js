@@ -266,40 +266,45 @@ function goWest() {
 function input() {
     var userInput = document.getElementById('command').value;
     switch (userInput) {
-        case 'N':
-        case 'n':
-            goNorth();
-            break;
-        case 'E':
-        case 'e':
-            goEast();
-            break;
-        case 'S':
-        case 's':
-            goSouth();
-            break;
-        case 'W':
-        case 'w':
-            goWest();
-            break;
-        case 'T':
-        case 't':
-            take();
-            break;
-        case 'I':
-        case 'i':
-            inventory();
-            break;
-        case 'H':
-        case 'h':
-            help();
-            break;
-        case 'P':
-        case 'p':
-            prevous();
-            break;
-        default:
-            setting('Invaild command, try again!');
+            
+    case 'N':
+    case 'n':
+        goNorth();
+        break;
+    case 'E':
+    case 'e':
+        goEast();
+        break;
+    case 'S':
+    case 's':
+        goSouth();
+        break;
+    case 'W':
+    case 'w':
+        goWest();
+        break;
+    case 'T':
+    case 't':
+        take();
+        break;
+    case 'I':
+    case 'i':
+        inventory();
+        break;
+    case 'H':
+    case 'h':
+        help();
+        break;
+    case 'P':
+    case 'p':
+        prevous();
+        break;
+    case 'L':
+    case 'l':
+        lookAround();
+        break;
+    default:
+        setting('Invaild command, try again!');
     }
 }
 
@@ -351,16 +356,13 @@ function help() {
     var west = isEnabled('W');
     extraInfo('Vaild text commands: H,T,I,P,'+north+','+east+','+south+','+west);
 }
-function isEnabled(btn) {
-        var blank = ' ';
-        if (document.getElementById(btn).disabled === false) {
-            return btn;
-        } else {
-            return blank;
-        }
-}
+
 function previous() {
     extraInfo('History: ' + breadcrumbTrail);
+}
+
+function lookAround() {
+    
 }
 
 // functions for enable/disable buttons
@@ -369,4 +371,12 @@ function disable(mybtn) {
 }
 function enable(mybtn) {
     document.getElementById(mybtn).disabled = false;
+}
+function isEnabled(btn) {
+        var blank = ' ';
+        if (document.getElementById(btn).disabled === false) {
+            return btn;
+        } else {
+            return blank;
+        }
 }
