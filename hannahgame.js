@@ -15,6 +15,19 @@ var banana = '';
 var water = '';
 var inventory1 = ['Waterbottle'];
 var breadcrumbTrail = ['Beach'];
+/*
+var player = {
+    currentLocation: "Beach",
+    currentPoints: 0,
+    inventory1: ['Waterbottle'],
+    breadcrumbTrail: ['Beach']
+}
+function Location(name,) {
+    this.place = name;
+    this.item = item;
+}
+    
+ */   
 
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
@@ -311,7 +324,7 @@ function input() {
 function take() {
     switch (currentLocation) {
     case 'Shack':
-            if (trackerSh === 1) {
+            if (trackerSh === 1) { 
                 knife = 'Knife';
                 inventory1.push(knife);
                 extraInfo('You have taken a '+knife);
@@ -362,7 +375,19 @@ function previous() {
 }
 
 function lookAround() {
-    
+    switch (currentLocation) {
+    case 'Shack':
+            extraInfo('There is a knife here.');
+            break;
+    case 'BananaTree':
+            extraInfo('There are bananas here.');
+            break;
+    case 'Waterfall':
+            extraInfo('There is water here.');
+            break;
+    default:
+            extraInfo('There is no item here.');
+    }
 }
 
 // functions for enable/disable buttons
