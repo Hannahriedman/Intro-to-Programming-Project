@@ -1,5 +1,5 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
-var currentLocation = "Beach";
+//var currentLocation = "Beach";
 var currentPoints = 0;
 var trackerO = 0;
 var trackerJ = 0;
@@ -15,19 +15,32 @@ var banana = '';
 var water = '';
 var inventory1 = ['Waterbottle'];
 var breadcrumbTrail = ['Beach'];
-/*
+var loctions = [];
+
 var player = {
-    currentLocation: "Beach",
+    currentLocation: 'Beach',
     currentPoints: 0,
     inventory1: ['Waterbottle'],
     breadcrumbTrail: ['Beach']
-}
-function Location(name,) {
+};
+/*
+function Location(name,item,tracker) {
     this.place = name;
-    this.item = item;
-}
+    this.items = item;
+    this.beenVisted = tracker;
+    //this.toString;
+};
+
+function Item(name,descrip){
+    this.object = name;
+    this.whatIsIt = descrip;
+    //this.toString;
+};
     
- */   
+var beach = new Location('Beach','',1);
+var cave = new Location('Cave','',0);
+var waterfall = new Location('Waterfall','Water',0);
+*/
 
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
@@ -41,10 +54,10 @@ function extraInfo(descrip) {
 
 // functions for buttons 
 function goNorth() {
-    switch (currentLocation) {
+    switch (player.currentLocation) {
             
     case 'Beach':
-            currentLocation = 'Jungle';
+            player.currentLocation = 'Jungle'; 
             if (trackerJ === 0) {
                  currentPoints += 5;
                 trackerJ = 1;
@@ -58,7 +71,7 @@ function goNorth() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Waterfall':
-            currentLocation = 'Cave'; // changed location to cave
+            player.currentLocation = 'Cave'; // changed location to cave
             if (trackerCa === 0) {
                 currentPoints += 5;
                 trackerCa = 1;
@@ -67,17 +80,17 @@ function goNorth() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Ocean':
-            currentLocation = 'Beach'; // changed location to beach
+            player.currentLocation = 'Beach'; // changed location to beach
             setting(beach());
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Jungle':
-            currentLocation = 'Trap'; // changed location to trap
+            player.currentLocation = 'Trap'; // changed location to trap
             setting(trap());
             yourPoints('Current Points: ' + currentPoints);  
             break;
     case 'Trap':
-            currentLocation = 'dead'; // end of game for player
+            player.currentLocation = 'dead'; // end of game for player
             currentPoints = 0;
             setting('You try to go north but you end up sinking further' +
                     ' into the quicksand.You are dead.');
@@ -90,7 +103,7 @@ function goNorth() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'SecretCave':
-            currentLocation = 'Cliffs'; // changed location to cliffs
+            player.currentLocation = 'Cliffs'; // changed location to cliffs
             setting(cliffs());
             yourPoints('Current Points: ' + currentPoints);
             break;
@@ -100,10 +113,10 @@ function goNorth() {
 }
         
 function goEast() {
-    switch (currentLocation){
+    switch (player.currentLocation){
             
     case 'Beach':
-            currentLocation = 'Cave'; //changed location to cave
+            player.currentLocation = 'Cave'; //changed location to cave
             if (trackerCa === 0) {
                 currentPoints += 5;
                 trackerCa = 1;
@@ -112,30 +125,28 @@ function goEast() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Trap':
-            currentLocation = 'dead'; // end of game for player
+            player.currentLocation = 'dead'; // end of game for player
             currentPoints = 0;
             setting('You reach for the vine but it turns out that its a Snake!' + 
                     'Still trapped by the quicksand, the snake attacks and you die.');
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Jungle':
-            currentLocation = 'BananaTree';
+            player.currentLocation = 'BananaTree';
             if (trackerB === 0) {
                 currentPoints += 5;
                 trackerB = 1;
             } 
             setting(bananaTree());
-            var banana = true;
-            inventory(banana);
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Cliffs':
-            currentLocation = 'Beach'; // changed location to Beach
+            player.currentLocation = 'Beach'; // changed location to Beach
             setting(beach());
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'SecretCave':
-            currentLocation = 'Waterfall'; // changed location to waterfall
+            player.currentLocation = 'Waterfall'; // changed location to waterfall
             if (trackerW === 0) {
                 currentPoints += 5;
                 trackerW = 1;
@@ -144,12 +155,12 @@ function goEast() {
             yourPoints('Current Points: ' + currentPoints);
                 break;
     case 'Tree':
-            currentLocation = 'Jungle';
+            player.currentLocation = 'Jungle';
             setting(jungle());
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Shack':
-            currentLocation = 'Jungle';
+            player.currentLocation = 'Jungle';
             setting(jungle());
             yourPoints('Current Points: ' + currentPoints);
             break;
@@ -158,9 +169,9 @@ function goEast() {
 }
         
 function goSouth() {
-    switch (currentLocation){
+    switch (player.currentLocation){
     case 'Beach':
-            currentLocation = 'Ocean'; //changed location to ocean
+            player.currentLocation = 'Ocean'; //changed location to ocean
             if (trackerO === 0) {
                 currentPoints += 5;
                 trackerO = 1;
@@ -169,13 +180,13 @@ function goSouth() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Ocean':
-            currentLocation = 'dead'; // end of game for player
+            player.currentLocation = 'dead'; // end of game for player
             currentPoints = 0;
             setting('You start to swim and get caught in a rip tide. You are dead. ');
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Cave':
-            currentLocation = 'Waterfall'; //changed location to waterfall
+            player.currentLocation = 'Waterfall'; //changed location to waterfall
             if (trackerW === 0) {
                 currentPoints += 5;
                 trackerW = 1;
@@ -184,19 +195,19 @@ function goSouth() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Jungle':
-            currentLocation = 'Beach'; // changed loaction to Beach
+            player.currentLocation = 'Beach'; // changed loaction to Beach
             setting(beach());
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Trap':
-                currentLocation = 'dead'; // end of game for player
-                currentPoints = 0;
-                setting('You try to go south but you end up sinking further ' + 
-                        'into the quicksand.You are dead.');
-                yourPoints('Current Points: ' + currentPoints);
-                break;
+            player.currentLocation = 'dead'; // end of game for player
+            currentPoints = 0;
+            setting('You try to go south but you end up sinking further ' + 
+                    'into the quicksand.You are dead.');
+            yourPoints('Current Points: ' + currentPoints);
+            break;
     case 'Cliffs':
-            currentLocation = 'SecretCave'; // changed location to secret cave
+            player.currentLocation = 'SecretCave'; // changed location to secret cave
             if (trackerS === 0) {
                 currentPoints += 5;
                 trackerS = 1;
@@ -205,7 +216,7 @@ function goSouth() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Shack':
-            currentLocation = 'Tree';
+            player.currentLocation = 'Tree';
             if (trackerT === 0) {
                 currentPoints += 5;
                 trackerT = 1;
@@ -218,14 +229,14 @@ function goSouth() {
 }
         
 function goWest() {
-    switch (currentLocation){
+    switch (player.currentLocation){
     case 'Cave':
-            currentLocation = 'Beach'; // changed location to beach
+            player.currentLocation = 'Beach'; // changed location to beach
             setting(beach(''));
             yourPoints('Current Points: ' + currentPoints); 
             break;
     case 'Ocean':
-            currentLocation = 'dead'; // end of game for player
+            player.currentLocation = 'dead'; // end of game for player
             setting('You swim for 5 minutes before realizing a manatee ' + 
                     'is following you. You do not like manatees. You have a panic ' + 
                     'attack and drown. You are dead.');
@@ -233,7 +244,7 @@ function goWest() {
             yourPoints('Current Points: ' + currentPoints); 
             break;
     case 'Trap':
-            currentLocation = 'Shack'; // changed location to shack
+            player.currentLocation = 'Shack'; // changed location to shack
             if (trackerSh === 0) {
                 currentPoints += 5;
                 trackerSh = 1;
@@ -242,7 +253,7 @@ function goWest() {
             yourPoints('Current Points: ' + currentPoints); 
             break;
     case 'Jungle':
-            currentLocation = 'Tree';
+            player.currentLocation = 'Tree';
             if (trackerT === 0) {
                 currentPoints += 5;
                 trackerT = 1;
@@ -251,7 +262,7 @@ function goWest() {
             yourPoints('Current Points: ' + currentPoints);    
             break;
     case 'Beach':
-            currentLocation = 'Cliffs'; // changed location to Cliffs
+            player.currentLocation = 'Cliffs'; // changed location to Cliffs
             if (trackerCl === 0) {
                 currentPoints += 5;
                 trackerCl = 1;
@@ -260,14 +271,14 @@ function goWest() {
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'Cliffs':
-            currentLocation = 'dead'; // end of game for player
+            player.currentLocation = 'dead'; // end of game for player
             currentPoints = 0;
             setting('You should have been more careful. You try to ' + 
                     'get a better look at the edge of the cliffs and you fall to your death.');
             yourPoints('Current Points: ' + currentPoints);
             break;
     case 'BananaTree':
-            currentLocation = 'Jungle';
+            player.currentLocation = 'Jungle';
             setting(jungle());
             yourPoints('Current Points: ' + currentPoints);
             break;
@@ -322,7 +333,7 @@ function input() {
 }
 
 function take() {
-    switch (currentLocation) {
+    switch (player.currentLocation) {
     case 'Shack':
             if (trackerSh === 1) { 
                 knife = 'Knife';
@@ -375,7 +386,7 @@ function previous() {
 }
 
 function lookAround() {
-    switch (currentLocation) {
+    switch (player.currentLocation) {
     case 'Shack':
             extraInfo('There is a knife here.');
             break;
