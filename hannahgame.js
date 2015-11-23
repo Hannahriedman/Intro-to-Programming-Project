@@ -8,7 +8,43 @@ var trackerS = 0;
 var trackerT = 0;
 var trackerSh = 0;
 var trackerB = 0;
-var loctions = [];
+var locations = [];
+
+
+// Prototypes 
+function Location(name, item, tracker) {
+    this.place = name;
+    this.items = item;
+    this.beenVisted = tracker;
+};
+function Item(name, descrip) {
+    this.object = name;
+    this.whatIsIt = descrip;
+};
+
+// new objects from prototypes
+
+// item objects
+var knife = new Item('Knife', 'You have taken a Knife.');
+var banana = new Item('Banana', 'You have taken a banana.');
+var water = new Item('Water', 'You have taken water.');
+var FedExBox = new Item('FedEx Box', 'You have taken the FedEx Box.');
+var noItem = new Item('No item', 'There is no item here');
+
+// loctaion objects
+var beach = new Location('Beach',noItem,1);
+var jungle = new Location('Jungle',noItem,0);
+var cave = new Location('Cave',noItem,0);
+var cliffs = new Location('Cliffs',noItem,0);
+var secretCave = new Location('SecretCave',noItem,0);
+var waterfall = new Location('Waterfall',water,0);
+var ocean = new Location('Ocean',FedExBox,0);
+var trap = new Location('Trap',noItem,0);
+var tree = new Location('Tree',noItem,0);
+var shack = new Location('Shack',knife,0);
+var bananaTree = new Location('BananaTree',banana,0)
+
+// Player Object
 
 var player = {
     currentLocation: 'Beach',
@@ -16,30 +52,6 @@ var player = {
     inventory: ['Waterbottle'],
     breadcrumbTrail: ['Beach']
 };
-
-// Prototypes 
-function Location(name,item,tracker) {
-    this.place = name;
-    this.items = item;
-    this.beenVisted = tracker;
-    //this.toString;
-};
-function Item(name,descrip){
-    this.object = name;
-    this.whatIsIt = descrip;
-    //this.toString;
-};
-
-// new objects from prototypes
-
-var beach = new Location('Beach','',1);
-var cave = new Location('Cave','',0);
-var waterfall = new Location('Waterfall','Water',0);
-
-var knife = new Item('Knife','You have taken a Knife.');
-var banana = new Item('Banana','You have taken a banana.');
-var water = new Item('Water','You have taken water.');
-var FedExBox = new Item('FedEx Box','You have taken the FedEx Box.');
 
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
@@ -84,7 +96,7 @@ function goNorth() {
             yourPoints('Current Points: ' + player.currentPoints);
             break;
     case 'Jungle':
-            player.currentLocation = 'Trap'; // changed location to trap
+            player.currentLocation =  'Trap'; // changed location to trap
             setting(trap());
             yourPoints('Current Points: ' + player.currentPoints);  
             break;
@@ -370,7 +382,7 @@ function take() {
             }
             break;
     default:
-            extraInfo('There is no item here.');
+            extraInfo(noItem.whatIsIt);
     }
 }
 
