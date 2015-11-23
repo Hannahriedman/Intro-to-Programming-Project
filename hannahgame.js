@@ -1,5 +1,4 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
-//var currentLocation = "Beach";
 var currentPoints = 0;
 var trackerO = 0;
 var trackerJ = 0;
@@ -14,7 +13,6 @@ var knife = '';
 var banana = '';
 var water = '';
 var inventory1 = ['Waterbottle'];
-var breadcrumbTrail = ['Beach'];
 var loctions = [];
 
 var player = {
@@ -382,7 +380,7 @@ function help() {
 }
 
 function previous() {
-    extraInfo('History: ' + breadcrumbTrail);
+    extraInfo('History: ' + player.breadcrumbTrail);
 }
 
 function lookAround() {

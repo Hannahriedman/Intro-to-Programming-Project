@@ -1,12 +1,15 @@
 // Hannah Riedman 11-8-15 Project 4 120L-115
 
+
+
+
 function beach(){
     var message = 'You are now back at the Beach.';
     enable('W'); // go to cliffs
     enable('S'); // go to ocean
     enable('E'); // go to cave
     enable('N'); // go to jungle
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function cave() {
@@ -15,7 +18,7 @@ function cave() {
     enable('S'); // go to waterfall
     disable('E');
     enable('N'); // message to dead end
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function cliffs() {
@@ -24,7 +27,7 @@ function cliffs() {
     enable('S'); // go to secretcave
     enable('E'); // back to beach
     enable('N'); // message 
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function secretCave() {
@@ -34,7 +37,7 @@ function secretCave() {
     disable('S');
     enable('E'); // go to waterfall
     enable('N'); // back to cliffs
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function ocean() {
@@ -44,7 +47,7 @@ function ocean() {
     enable('S'); // death
     disable('E');
     enable('N'); // back to beach
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function jungle() {
@@ -53,7 +56,7 @@ function jungle() {
     enable('S'); // back to beach
     enable('E'); // go to bananatree
     enable('N'); // go to trap
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 } 
 function waterfall() {
@@ -62,7 +65,7 @@ function waterfall() {
     disable('S');
     disable('E');
     enable('N'); // back to cave enterance
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function trap() {
@@ -73,7 +76,7 @@ function trap() {
     enable('S'); // death
     enable('E'); // death
     enable('N'); // death
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function tree() {
@@ -84,7 +87,7 @@ function tree() {
     disable('S');
     enable('E'); // back to jungle entrance
     disable('N'); 
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
     
 }
@@ -96,7 +99,7 @@ function shack() {
     enable('S'); // go to tree
     enable('E'); // go back to jungle entrance 
     disable('N');
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
 function bananaTree() {
@@ -105,6 +108,6 @@ function bananaTree() {
     disable('S');
     disable('E');
     disable('N');
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation);
     return message;
 }
