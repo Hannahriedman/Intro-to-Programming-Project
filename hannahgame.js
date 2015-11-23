@@ -1,5 +1,4 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
-//var currentPoints = 0;
 var trackerO = 0;
 var trackerJ = 0;
 var trackerCa = 0;
@@ -9,10 +8,9 @@ var trackerS = 0;
 var trackerT = 0;
 var trackerSh = 0;
 var trackerB = 0;
-var knife = '';
-var banana = '';
-var water = '';
-//var inventory1 = ['Waterbottle'];
+//var knife = '';
+//var banana = '';
+//var water = '';
 var loctions = [];
 
 var player = {
@@ -21,24 +19,29 @@ var player = {
     inventory: ['Waterbottle'],
     breadcrumbTrail: ['Beach']
 };
-/*
+
+// Prototypes 
 function Location(name,item,tracker) {
     this.place = name;
     this.items = item;
     this.beenVisted = tracker;
     //this.toString;
 };
-
 function Item(name,descrip){
     this.object = name;
     this.whatIsIt = descrip;
     //this.toString;
 };
-    
+
+// new objects from prototypes
+
 var beach = new Location('Beach','',1);
 var cave = new Location('Cave','',0);
 var waterfall = new Location('Waterfall','Water',0);
-*/
+
+var knife = new Item('Knife','You have taken a Knife.');
+var banana = new Item('Banana','You have taken a banana.');
+var water = new Item('Water','You have taken water.');
 
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
@@ -334,32 +337,32 @@ function take() {
     switch (player.currentLocation) {
     case 'Shack':
             if (trackerSh === 1) { 
-                knife = 'Knife';
-                player.inventory.push(knife);
-                extraInfo('You have taken a '+knife);
+                //knife = 'Knife';
+                player.inventory.push(knife.object);
+                extraInfo(knife.whatIsIt);
                 trackerSh = 2;
             } else {
-                extraInfo('You have already taken the ' + knife);
+                extraInfo('You have already taken the ' + knife.object);
             }
             break;
     case 'BananaTree':
             if (trackerB === 1) {
-                banana = 'Banana';
-                player.inventory.push(banana);
-                extraInfo('You have taken a '+banana);
+                //banana = 'Banana';
+                player.inventory.push(banana.object);
+                extraInfo(banana.whatIsIt);
                 trackerB = 2;
             } else {
-                extraInfo('You have already taken the ' + banana);
+                extraInfo('You have already taken the ' + banana.object);
             }
             break;
     case 'Waterfall':
             if (trackerW === 1) {
-                water = 'Water';
-                player.inventory.push(water);
-                extraInfo('You have taken a '+water);
+                //water = 'Water';
+                player.inventory.push(water.object);
+                extraInfo(water.whatIsIt);
                 trackerW = 2;
             } else {
-                extraInfo('You have already taken the ' + water);
+                extraInfo('You have already taken the ' + water.object);
             }
             break;
     default:
