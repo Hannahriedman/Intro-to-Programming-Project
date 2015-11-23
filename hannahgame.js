@@ -71,9 +71,9 @@ function goNorth() {
             
     case locations[0]:
             player.currentLocation = locations[1]; 
-            if (trackerJ === 0) {
+            if (locations[1].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerJ = 1;
+                locations[1].beenVisted = 1;
             } 
             setting(jungle());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -85,9 +85,9 @@ function goNorth() {
             break;
     case locations[5]:
             player.currentLocation = locations[2]; // changed location to cave
-            if (trackerCa === 0) {
+            if (locations[2].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerCa = 1;
+                locations[2].beenVisted = 1;
             } 
             setting(cave());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -130,10 +130,10 @@ function goEast() {
             
     case locations[0]:
             player.currentLocation = locations[2]; //changed location to cave
-            if (trackerCa === 0) {
+            if (locations[2].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerCa = 1;
-            } 
+                locations[2].beenVisted = 1;
+            }
             setting(cave());
             yourPoints('Current Points: ' + player.currentPoints);
             break;
@@ -146,9 +146,9 @@ function goEast() {
             break;
     case locations[1]:
             player.currentLocation = locations[10];
-            if (trackerB === 0) {
+            if (locations[10].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerB = 1;
+                locations[10].beenVisted = 1;
             } 
             setting(bananaTree());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -160,10 +160,10 @@ function goEast() {
             break;
     case locations[4]:
             player.currentLocation = locations[5]; // changed location to waterfall
-            if (trackerW === 0) {
+            if (locations[5].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerW = 1;
-                } 
+                locations[5].beenVisted = 1;
+            }
             setting('Walking for over an hour in the dark and wet cave you find a waterfall!' +                     waterfall());
             yourPoints('Current Points: ' + player.currentPoints);
                 break;
@@ -185,9 +185,9 @@ function goSouth() {
     switch (player.currentLocation){
     case locations[0]:
             player.currentLocation = locations[6]; //changed location to ocean
-            if (trackerO === 0) {
+            if (locations[6].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerO = 1;
+                locations[6].beenVisted = 1;
             } 
             setting(ocean());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -200,9 +200,9 @@ function goSouth() {
             break;
     case locations[2]:
             player.currentLocation = locations[5]; //changed location to waterfall
-            if (trackerW === 0) {
+            if (locations[5].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerW = 1;
+                locations[5].beenVisted = 1;
             } 
             setting(waterfall());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -221,18 +221,18 @@ function goSouth() {
             break;
     case locations[3]:
             player.currentLocation = locations[4]; // changed location to secret cave
-            if (trackerS === 0) {
+            if (locations[4].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerS = 1;
+                locations[4].beenVisted = 1;
             } 
             setting(secretCave());
             yourPoints('Current Points: ' + player.currentPoints);
             break;
     case locations[9]:
             player.currentLocation = locations[8];
-            if (trackerT === 0) {
+            if (locations[8].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerT = 1;
+                locations[8].beenVisted = 1;
             }
             setting('You fall down a steep hill so you cannot go back up north. ' + tree());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -258,27 +258,27 @@ function goWest() {
             break;
     case locations[7]:
             player.currentLocation = locations[9]; // changed location to shack
-            if (trackerSh === 0) {
+            if (locations[9].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerSh = 1;
+                locations[9].beenVisted = 1;
             } 
             setting(shack());
             yourPoints('Current Points: ' + player.currentPoints); 
             break;
     case locations[1]:
             player.currentLocation = locations[8];
-            if (trackerT === 0) {
+            if (locations[8].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerT = 1;
+                locations[8].beenVisted = 1;
             } 
             setting(tree());
             yourPoints('Current Points: ' + player.currentPoints);    
             break;
     case locations[0]:
             player.currentLocation = locations[3]; // changed location to Cliffs
-            if (trackerCl === 0) {
+            if (locations[3].beenVisted === 0) {
                 player.currentPoints += 5;
-                trackerCl = 1;
+                locations[3].beenVisted = 1;
             } 
             setting(cliffs());
             yourPoints('Current Points: ' + player.currentPoints);
@@ -348,37 +348,37 @@ function input() {
 function take() {
     switch (player.currentLocation) {
     case locations[9]:
-            if (trackerSh === 1) { 
+            if (locations[9].beenVisted === 1) { 
                 player.inventory.push(knife.object);
                 extraInfo(knife.whatIsIt);
-                trackerSh = 2;
+                locations[9].beenVisted = 2;
             } else {
                 extraInfo('You have already taken the ' + knife.object);
             }
             break;
     case locations[10]:
-            if (trackerB === 1) {
+            if (locations[10].beenVisted === 1) {
                 player.inventory.push(banana.object);
                 extraInfo(banana.whatIsIt);
-                trackerB = 2;
+                locations[10].beenVisted = 2;
             } else {
                 extraInfo('You have already taken the ' + banana.object);
             }
             break;
     case locations[5]:
-            if (trackerW === 1) {
+            if (locations[5].beenVisted === 1) {
                 player.inventory.push(water.object);
                 extraInfo(water.whatIsIt);
-                trackerW = 2;
+                locations[5].beenVisted = 2;
             } else {
                 extraInfo('You have already taken the ' + water.object);
             }
             break;
     case locations[6]:
-            if (trackerO === 1) {
+            if (locations[6].beenVisted === 1) {
                 player.inventory.push(FedExBox.object);
                 extraInfo(FedExBox.whatIsIt);
-                trackerO = 2;
+                locations[6].beenVisted = 2;
             } else {
                 extraInfo('You have already taken the ' + FedExBox.object);
             }
