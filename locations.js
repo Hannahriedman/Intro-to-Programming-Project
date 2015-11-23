@@ -60,7 +60,7 @@ function jungle() {
     return message;
 } 
 function waterfall() {
-    var message = 'You are at a Waterfall! Congrats! You have found fresh water! Take some water!';
+    var message = 'You are at a Waterfall! Congrats! You have found fresh water!';
     disable('W');
     disable('S');
     disable('E');
@@ -94,7 +94,7 @@ function tree() {
 function shack() {
     var message = 'You grab onto the branch and pull yourself ' + 
                   'out of the quicksand. You walk further into the jungle before ' +
-                  'discovering a shack. It looks very creepy.There is an old knife there.';
+                  'discovering a shack. It looks very creepy.';
     disable('W');
     enable('S'); // go to tree
     enable('E'); // go back to jungle entrance 
@@ -103,7 +103,7 @@ function shack() {
     return message;
 }
 function bananaTree() {
-    var message = 'Yay! You have found some bananas!  Take some, you might be hungry later!';
+    var message = 'You have found Banana Trees, there might be monkeys around. ';
     enable('W'); // back to jungle entracne 
     disable('S');
     disable('E');

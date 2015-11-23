@@ -8,9 +8,6 @@ var trackerS = 0;
 var trackerT = 0;
 var trackerSh = 0;
 var trackerB = 0;
-//var knife = '';
-//var banana = '';
-//var water = '';
 var loctions = [];
 
 var player = {
@@ -42,6 +39,7 @@ var waterfall = new Location('Waterfall','Water',0);
 var knife = new Item('Knife','You have taken a Knife.');
 var banana = new Item('Banana','You have taken a banana.');
 var water = new Item('Water','You have taken water.');
+var FedExBox = new Item('FedEx Box','You have taken the FedEx Box.');
 
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
@@ -337,7 +335,6 @@ function take() {
     switch (player.currentLocation) {
     case 'Shack':
             if (trackerSh === 1) { 
-                //knife = 'Knife';
                 player.inventory.push(knife.object);
                 extraInfo(knife.whatIsIt);
                 trackerSh = 2;
@@ -347,7 +344,6 @@ function take() {
             break;
     case 'BananaTree':
             if (trackerB === 1) {
-                //banana = 'Banana';
                 player.inventory.push(banana.object);
                 extraInfo(banana.whatIsIt);
                 trackerB = 2;
@@ -357,12 +353,20 @@ function take() {
             break;
     case 'Waterfall':
             if (trackerW === 1) {
-                //water = 'Water';
                 player.inventory.push(water.object);
                 extraInfo(water.whatIsIt);
                 trackerW = 2;
             } else {
                 extraInfo('You have already taken the ' + water.object);
+            }
+            break;
+    case 'Ocean':
+            if (trackerO === 1) {
+                player.inventory.push(FedExBox.object);
+                extraInfo(FedExBox.whatIsIt);
+                trackerO = 2;
+            } else {
+                extraInfo('You have already taken the ' + FedExBox.object);
             }
             break;
     default:
@@ -396,6 +400,9 @@ function lookAround() {
             break;
     case 'Waterfall':
             extraInfo('There is water here.');
+            break;
+    case 'Ocean':
+            extraInfo('There seems to be a FexEx Box Floating on the shore.')
             break;
     default:
             extraInfo('There is no item here.');
