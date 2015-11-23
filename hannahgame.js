@@ -12,13 +12,13 @@ var trackerB = 0;
 var knife = '';
 var banana = '';
 var water = '';
-var inventory1 = ['Waterbottle'];
+//var inventory1 = ['Waterbottle'];
 var loctions = [];
 
 var player = {
     currentLocation: 'Beach',
     currentPoints: 0,
-    inventory1: ['Waterbottle'],
+    inventory: ['Waterbottle'],
     breadcrumbTrail: ['Beach']
 };
 /*
@@ -335,7 +335,7 @@ function take() {
     case 'Shack':
             if (trackerSh === 1) { 
                 knife = 'Knife';
-                inventory1.push(knife);
+                player.inventory.push(knife);
                 extraInfo('You have taken a '+knife);
                 trackerSh = 2;
             } else {
@@ -345,7 +345,7 @@ function take() {
     case 'BananaTree':
             if (trackerB === 1) {
                 banana = 'Banana';
-                inventory1.push(banana);
+                player.inventory.push(banana);
                 extraInfo('You have taken a '+banana);
                 trackerB = 2;
             } else {
@@ -355,7 +355,7 @@ function take() {
     case 'Waterfall':
             if (trackerW === 1) {
                 water = 'Water';
-                inventory1.push(water);
+                player.inventory.push(water);
                 extraInfo('You have taken a '+water);
                 trackerW = 2;
             } else {
@@ -368,7 +368,7 @@ function take() {
 }
 
 function inventory() {
-    extraInfo('Currently you have: ' + inventory1);
+    extraInfo('Currently you have: ' + player.inventory);
 }
 
 function help() {
