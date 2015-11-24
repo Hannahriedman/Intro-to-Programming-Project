@@ -1,19 +1,12 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
-var trackerO = 0;
-var trackerJ = 0;
-var trackerCa = 0;
-var trackerCl = 0;
-var trackerW = 0;
-var trackerS = 0;
-var trackerT = 0;
-var trackerSh = 0;
-var trackerB = 0;
+
 
 // Prototypes 
-function Location(name, item, tracker) {
+function Location(name, item, tracker, descrip) {
     this.place = name;
     this.items = item;
     this.beenVisted = tracker;
+    this.whatIsHere = descrip;
 };
 function Item(name, descrip) {
     this.object = name;
@@ -30,21 +23,46 @@ var FedExBox = new Item('FedEx Box', 'You have taken the FedEx Box.');
 var noItem = new Item('No item', 'There is no item here');
 
 // loctaion objects
-var beach = new Location('Beach',noItem,1);
-var jungle = new Location('Jungle',noItem,0);
-var cave = new Location('Cave',noItem,0);
-var cliffs = new Location('Cliffs',noItem,0);
-var secretCave = new Location('SecretCave',noItem,0);
-var waterfall = new Location('Waterfall',water,0);
-var ocean = new Location('Ocean',FedExBox,0);
-var trap = new Location('Trap',noItem,0);
-var tree = new Location('Tree',noItem,0);
-var shack = new Location('Shack',knife,0);
-var bananaTree = new Location('BananaTree',banana,0)
+var beach1 = new Location('Beach',noItem,1,'You are now back at the Beach.');
+
+var jungle1 = new Location('Jungle',noItem,0,'You are now in the Jungle.');
+                           
+var cave1 = new Location('Cave',noItem,0,'You are now in a cave.' + 
+                         'There is a path to the North and to the South.');
+
+var cliffs1 = new Location('Cliffs',noItem,0,'You are now at the rocky cliffs!' + 
+                           'Be careful!');
+
+var secretCave1 = new Location('SecretCave',noItem,0,'The cliffs drop off into the' + 
+                               'ocean to the south. You decide to climb down the cliffs' +
+                               'and you find an enterance to a cave.');
+
+var waterfall1 = new Location('Waterfall',water,0,'You are at a Waterfall! Congrats!' + 
+                              'You have found fresh water!');
+
+var ocean1 = new Location('Ocean',FedExBox,0,'You are now facing the vast ocean.' + 
+                          'You do not have a boat  and it looks pretty dangerous.');
+
+var trap1 = new Location('Trap',noItem,0,'You walk through the Jungle for an hour' +  
+                         'you decide to take a break under a tree.\n After a few' + 
+                         'moments you notice you are sinking into the ground.' + 
+                         'There is a branch to the west and a vine to the East.');
+
+var tree1 = new Location('Tree',noItem,0,'After a 5 minute walk you come upon a' + 
+                         'large tree. You climb ontop of it and see what looks' + 
+                         'like a waterfall in the distance. it appears to be' + 
+                         'to the east of the beach.\n');
+
+var shack1 = new Location('Shack',knife,0,'You grab onto the branch and pull' + 
+                          'yourself out of the quicksand. You walk further into' + 
+                          'the jungle before discovering a shack. It looks very creepy.');
+
+var bananaTree1 = new Location('BananaTree',banana,0,'You have found Banana Trees,' +
+                               'there might be monkeys around. ');
 
 // locations array 
 
-var locations = [beach,jungle,cave,cliffs,secretCave,waterfall,ocean,trap,tree,shack,bananaTree];
+var locations = [beach1,jungle1,cave1,cliffs1,secretCave1,waterfall1,ocean1,trap1,tree1,shack1,bananaTree1];
 
 // Player Object
 
@@ -245,7 +263,7 @@ function goWest() {
     switch (player.currentLocation){
     case locations[2]:
             player.currentLocation = locations[0]; // changed location to beach
-            setting(beach(''));
+            setting(beach());
             yourPoints('Current Points: ' + player.currentPoints); 
             break;
     case locations[6]:
@@ -401,7 +419,7 @@ function help() {
 }
 
 function previous() {
-    extraInfo('History: ' + player.breadcrumbTrail);
+    extraInfo('History: ' + player.breadcrumbTrail.toString());
 }
 
 function lookAround() {
