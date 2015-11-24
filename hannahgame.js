@@ -1,6 +1,5 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
 
-
 // Prototypes 
 function Location(name, item, tracker, descrip) {
     this.place = name;
@@ -28,20 +27,20 @@ var beach1 = new Location('Beach',noItem,1,'You are now back at the Beach.');
 var jungle1 = new Location('Jungle',noItem,0,'You are now in the Jungle.');
                            
 var cave1 = new Location('Cave',noItem,0,'You are now in a cave.' + 
-                         'There is a path to the North and to the South.');
+                         ' There is a path to the North and to the South.');
 
 var cliffs1 = new Location('Cliffs',noItem,0,'You are now at the rocky cliffs!' + 
-                           'Be careful!');
+                           ' Be careful!');
 
 var secretCave1 = new Location('SecretCave',noItem,0,'The cliffs drop off into the' + 
-                               'ocean to the south. You decide to climb down the cliffs' +
-                               'and you find an enterance to a cave.');
+                               ' ocean to the south. You decide to climb down the cliffs' +
+                               ' and you find an enterance to a cave.');
 
 var waterfall1 = new Location('Waterfall',water,0,'You are at a Waterfall! Congrats!' + 
-                              'You have found fresh water!');
+                              ' You have found fresh water!');
 
 var ocean1 = new Location('Ocean',FedExBox,0,'You are now facing the vast ocean.' + 
-                          'You do not have a boat  and it looks pretty dangerous.');
+                          ' You do not have a boat  and it looks pretty dangerous.');
 
 var trap1 = new Location('Trap',noItem,0,'You walk through the Jungle for an hour' +  
                          'you decide to take a break under a tree.\n After a few' + 
@@ -49,16 +48,16 @@ var trap1 = new Location('Trap',noItem,0,'You walk through the Jungle for an hou
                          'There is a branch to the west and a vine to the East.');
 
 var tree1 = new Location('Tree',noItem,0,'After a 5 minute walk you come upon a' + 
-                         'large tree. You climb ontop of it and see what looks' + 
-                         'like a waterfall in the distance. it appears to be' + 
-                         'to the east of the beach.\n');
+                         ' large tree. You climb ontop of it and see what looks' + 
+                         ' like a waterfall in the distance. it appears to be' + 
+                         ' to the east of the beach.\n');
 
 var shack1 = new Location('Shack',knife,0,'You grab onto the branch and pull' + 
-                          'yourself out of the quicksand. You walk further into' + 
-                          'the jungle before discovering a shack. It looks very creepy.');
+                          ' yourself out of the quicksand. You walk further into' + 
+                          ' the jungle before discovering a shack. It looks very creepy.');
 
 var bananaTree1 = new Location('BananaTree',banana,0,'You have found Banana Trees,' +
-                               'there might be monkeys around. ');
+                               ' there might be monkeys around. ');
 
 // locations array 
 
@@ -98,7 +97,7 @@ function goNorth() {
             break;
     case locations[2]:
             setting('You walk for 20 minutes but come up to a dead end.' +
-                    'There is no water around so you walk back to the entrance of the cave. ');
+                    ' There is no water around so you walk back to the entrance of the cave. ');
             yourPoints('Current Points: ' + player.currentPoints);
             break;
     case locations[5]:
@@ -129,8 +128,8 @@ function goNorth() {
             break;
     case locations[3]:
             setting('You can see the whole island from here.' + 
-                    'To the north you see a Jungle, maybe there will be water or food there.' +
-                    'You go back to the entrance of Cliffs.\n');
+                    ' To the north you see a Jungle, maybe there will be water or food there.' +
+                    ' You go back to the entrance of Cliffs.\n');
             yourPoints('Current Points: ' + player.currentPoints);
             break;
     case locations[4]:
@@ -159,7 +158,7 @@ function goEast() {
             player.currentLocation = 'dead'; // end of game for player
             player.currentPoints = 0;
             setting('You reach for the vine but it turns out that its a Snake!' + 
-                    'Still trapped by the quicksand, the snake attacks and you die.');
+                    ' Still trapped by the quicksand, the snake attacks and you die.');
             yourPoints('Current Points: ' + player.currentPoints);
             break;
     case locations[1]:
@@ -234,7 +233,7 @@ function goSouth() {
             player.currentLocation = 'dead'; // end of game for player
             player.currentPoints = 0;
             setting('You try to go south but you end up sinking further ' + 
-                    'into the quicksand.You are dead.');
+                    ' into the quicksand. You are dead.');
             yourPoints('Current Points: ' + player.currentPoints);
             break;
     case locations[3]:
