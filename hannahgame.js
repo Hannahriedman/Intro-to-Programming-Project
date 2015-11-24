@@ -60,11 +60,9 @@ var bananaTree1 = new Location('BananaTree',banana,0,'You have found Banana Tree
                                ' there might be monkeys around. ');
 
 // locations array 
-
 var locations = [beach1,jungle1,cave1,cliffs1,secretCave1,waterfall1,ocean1,trap1,tree1,shack1,bananaTree1];
 
 // Player Object
-
 var player = {
     currentLocation: locations[0],
     currentPoints: 0,
@@ -72,6 +70,7 @@ var player = {
     breadcrumbTrail: ['Beach']
 };
 
+// Display text functions
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
 } 
