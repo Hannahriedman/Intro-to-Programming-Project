@@ -80,7 +80,6 @@ function yourPoints(descrip) {
 function extraInfo(descrip) {
     document.getElementById('info').innerHTML = descrip;
 }
-
 // functions for buttons 
 function goNorth() {
     switch (player.currentLocation) {
@@ -372,7 +371,7 @@ function take() {
 }
 
 function inventory() {
-    extraInfo('Currently you have: ' + player.inventory);
+    document.getElementById('inventory').innerHTML = ('Currently you have: ' + player.inventory);
 }
 
 function help() {
@@ -384,7 +383,7 @@ function help() {
 }
 
 function previous() {
-    extraInfo('History: ' + player.breadcrumbTrail);
+    document.getElementById('previous').innerHTML = ('History: ' + player.breadcrumbTrail);
 }
 
 function lookAround() {

@@ -7,6 +7,7 @@ function beach(){
     enable('E'); // go to cave
     enable('N'); // go to jungle
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function cave() {
@@ -16,8 +17,7 @@ function cave() {
     disable('E');
     enable('N'); // message to dead end
     player.breadcrumbTrail.push(player.currentLocation.place);
-    console.log(player.currentLocation.place);
-    console.log(player.breadcrumbTrail);
+    previous();
     return message;
 }
 function cliffs() {
@@ -27,6 +27,7 @@ function cliffs() {
     enable('E'); // back to beach
     enable('N'); // message 
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function secretCave() {
@@ -36,6 +37,7 @@ function secretCave() {
     enable('E'); // go to waterfall
     enable('N'); // back to cliffs
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function ocean() {
@@ -45,6 +47,7 @@ function ocean() {
     disable('E');
     enable('N'); // back to beach
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function jungle() {
@@ -54,6 +57,7 @@ function jungle() {
     enable('E'); // go to bananatree
     enable('N'); // go to trap
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 } 
 function waterfall() {
@@ -63,6 +67,7 @@ function waterfall() {
     disable('E');
     enable('N'); // back to cave enterance
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function trap() {
@@ -72,6 +77,7 @@ function trap() {
     enable('E'); // death
     enable('N'); // death
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function tree() {
@@ -81,6 +87,7 @@ function tree() {
     enable('E'); // back to jungle entrance
     disable('N'); 
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
     
 }
@@ -91,6 +98,7 @@ function shack() {
     enable('E'); // go back to jungle entrance 
     disable('N');
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
 function bananaTree() {
@@ -100,5 +108,6 @@ function bananaTree() {
     disable('E');
     disable('N');
     player.breadcrumbTrail.push(player.currentLocation.place);
+    previous();
     return message;
 }
