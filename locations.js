@@ -1,110 +1,104 @@
 // Hannah Riedman 11-8-15 Project 4 120L-115
 
 function beach(){
-    var message = 'You are now back at the Beach.';
+    var message = locations[0].whatIsHere; //'You are now back at the Beach.';
     enable('W'); // go to cliffs
     enable('S'); // go to ocean
     enable('E'); // go to cave
     enable('N'); // go to jungle
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function cave() {
-    var message = 'You are now in a cave.There is a path to the North and to the South. ';
+    var message = locations[2].whatIsHere;
     enable('W'); // back to beach
     enable('S'); // go to waterfall
     disable('E');
     enable('N'); // message to dead end
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
+    console.log(player.currentLocation.place);
+    console.log(player.breadcrumbTrail);
     return message;
 }
 function cliffs() {
-    var message = 'You are now at the rocky cliffs! Be careful!';
+    var message = locations[3].whatIsHere;
     enable('W'); // death
     enable('S'); // go to secretcave
     enable('E'); // back to beach
     enable('N'); // message 
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function secretCave() {
-    var message = 'The cliffs drop off into the ocean to the south.' + 
-'You decide to climb down the cliffs and you find an enterance to a cave.';
+    var message = locations[4].whatIsHere;
     disable('W');
     disable('S');
     enable('E'); // go to waterfall
     enable('N'); // back to cliffs
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function ocean() {
-    var message = 'You are now facing the vast ocean. You do not ' + 
-'have a boat  and it looks pretty dangerous.';
+    var message = locations[6].whatIsHere;
     enable('W'); // death
     enable('S'); // death
     disable('E');
     enable('N'); // back to beach
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function jungle() {
-    var message ='You are now in the Jungle.';
+    var message = locations[1].whatIsHere;
     enable('W'); // go to tree
     enable('S'); // back to beach
     enable('E'); // go to bananatree
     enable('N'); // go to trap
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 } 
 function waterfall() {
-    var message = 'You are at a Waterfall! Congrats! You have found fresh water! Take some water!';
+    var message = locations[5].whatIsHere;
     disable('W');
     disable('S');
     disable('E');
     enable('N'); // back to cave enterance
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function trap() {
-    var message = 'You walk through the Jungle for an hour you decide ' +
-'to take a break under a tree.\n After a few moments you notice you ' + 
-'are sinking into the ground. There is a branch to the west and a vine to the East.';
+    var message = locations[7].whatIsHere;
     enable('W'); // escape trap
     enable('S'); // death
     enable('E'); // death
     enable('N'); // death
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function tree() {
-    var message = 'After a 5 minute walk you come upon a large tree. ' + 
-                  'You climb ontop of it and see what looks like a waterfall in the distance. ' + 
-                  'it appears to be to the east of the beach.\n';
+    var message = locations[8].whatIsHere;
     disable('W');
     disable('S');
     enable('E'); // back to jungle entrance
     disable('N'); 
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
     
 }
 function shack() {
-    var message = 'You grab onto the branch and pull yourself ' + 
-                  'out of the quicksand. You walk further into the jungle before ' +
-                  'discovering a shack. It looks very creepy.There is an old knife there.';
+    var message = locations[9].whatIsHere;
     disable('W');
     enable('S'); // go to tree
     enable('E'); // go back to jungle entrance 
     disable('N');
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
 function bananaTree() {
-    var message = 'Yay! You have found some bananas!  Take some, you might be hungry later!';
+    var message = locations[10].whatIsHere;
     enable('W'); // back to jungle entracne 
     disable('S');
     disable('E');
     disable('N');
-    breadcrumbTrail.push(currentLocation);
+    player.breadcrumbTrail.push(player.currentLocation.place);
     return message;
 }
