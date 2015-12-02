@@ -1,7 +1,7 @@
 // Hannah Riedman 11-8-15 Project 4 120L-115
 
 function beach(){
-    var message = beach1.whatIsHere.toString(); //'You are now back at the Beach.';
+    var message = locations[0].whatIsHere; //'You are now back at the Beach.';
     enable('W'); // go to cliffs
     enable('S'); // go to ocean
     enable('E'); // go to cave
@@ -10,7 +10,7 @@ function beach(){
     return message;
 }
 function cave() {
-    var message = cave1.whatIsHere.toString();
+    var message = locations[2].whatIsHere;
     enable('W'); // back to beach
     enable('S'); // go to waterfall
     disable('E');
@@ -21,7 +21,7 @@ function cave() {
     return message;
 }
 function cliffs() {
-    var message = cliffs1.whatIsHere.toString();
+    var message = locations[3].whatIsHere;
     enable('W'); // death
     enable('S'); // go to secretcave
     enable('E'); // back to beach
@@ -30,7 +30,7 @@ function cliffs() {
     return message;
 }
 function secretCave() {
-    var message = secretCave1.whatIsHere.toString();
+    var message = locations[4].whatIsHere;
     disable('W');
     disable('S');
     enable('E'); // go to waterfall
@@ -39,7 +39,7 @@ function secretCave() {
     return message;
 }
 function ocean() {
-    var message = ocean1.whatIsHere.toString();
+    var message = locations[6].whatIsHere;
     enable('W'); // death
     enable('S'); // death
     disable('E');
@@ -48,7 +48,7 @@ function ocean() {
     return message;
 }
 function jungle() {
-    var message = jungle1.whatIsHere.toString();
+    var message = locations[1].whatIsHere;
     enable('W'); // go to tree
     enable('S'); // back to beach
     enable('E'); // go to bananatree
@@ -57,7 +57,7 @@ function jungle() {
     return message;
 } 
 function waterfall() {
-    var message = waterfall1.whatIsHere.toString();
+    var message = locations[5].whatIsHere;
     disable('W');
     disable('S');
     disable('E');
@@ -66,7 +66,7 @@ function waterfall() {
     return message;
 }
 function trap() {
-    var message = trap1.whatIsHere.toString();
+    var message = locations[7].whatIsHere;
     enable('W'); // escape trap
     enable('S'); // death
     enable('E'); // death
@@ -75,7 +75,7 @@ function trap() {
     return message;
 }
 function tree() {
-    var message = tree1.whatIsHere.toString();
+    var message = locations[8].whatIsHere;
     disable('W');
     disable('S');
     enable('E'); // back to jungle entrance
@@ -85,7 +85,7 @@ function tree() {
     
 }
 function shack() {
-    var message = shack1.whatIsHere.toString();
+    var message = locations[9].whatIsHere;
     disable('W');
     enable('S'); // go to tree
     enable('E'); // go back to jungle entrance 
@@ -94,7 +94,7 @@ function shack() {
     return message;
 }
 function bananaTree() {
-    var message = bananaTree1.whatIsHere.toString();
+    var message = locations[10].whatIsHere;
     enable('W'); // back to jungle entracne 
     disable('S');
     disable('E');

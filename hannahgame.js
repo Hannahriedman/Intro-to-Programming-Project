@@ -362,46 +362,13 @@ function input() {
 }
 
 function take() {
-    switch (player.currentLocation) {
-    case locations[9]:
-            if (locations[9].beenVisted === 1) { 
-                player.inventory.push(knife.object);
-                extraInfo(knife.whatIsIt);
-                locations[9].beenVisted = 2;
-            } else {
-                extraInfo('You have already taken the ' + knife.object);
-            }
-            break;
-    case locations[10]:
-            if (locations[10].beenVisted === 1) {
-                player.inventory.push(banana.object);
-                extraInfo(banana.whatIsIt);
-                locations[10].beenVisted = 2;
-            } else {
-                extraInfo('You have already taken the ' + banana.object);
-            }
-            break;
-    case locations[5]:
-            if (locations[5].beenVisted === 1) {
-                player.inventory.push(water.object);
-                extraInfo(water.whatIsIt);
-                locations[5].beenVisted = 2;
-            } else {
-                extraInfo('You have already taken the ' + water.object);
-            }
-            break;
-    case locations[6]:
-            if (locations[6].beenVisted === 1) {
-                player.inventory.push(FedExBox.object);
-                extraInfo(FedExBox.whatIsIt);
-                locations[6].beenVisted = 2;
-            } else {
-                extraInfo('You have already taken the ' + FedExBox.object);
-            }
-            break;
-    default:
-            extraInfo(noItem.whatIsIt);
+    var itemHere = player.currentLocation.items;
+    if (itemHere !== noItem) {
+        player.currentLocation.items = noItem;
+        player.inventory.push(itemHere.object);
     }
+    extraInfo(itemHere.whatIsIt);
+      
 }
 
 function inventory() {
@@ -413,30 +380,24 @@ function help() {
     var east = isEnabled('E');
     var south = isEnabled('S');
     var west = isEnabled('W');
-    extraInfo('Vaild text commands: H,T,I,P,'+north+','+east+','+south+','+west);
+    extraInfo('Vaild text commands: H,T,I,P,L'+north+','+east+','+south+','+west);
 }
 
 function previous() {
-    extraInfo('History: ' + player.breadcrumbTrail.toString());
+    extraInfo('History: ' + player.breadcrumbTrail);
 }
 
 function lookAround() {
-    switch (player.currentLocation) {
-    case locations[9]:
-            extraInfo('There is a knife here.');
-            break;
-    case locations[10]:
-            extraInfo('There are bananas here.');
-            break;
-    case locations[5]:
-            extraInfo('There is water here.');
-            break;
-    case locations[6]:
-            extraInfo('There seems to be a FexEx Box Floating on the shore.')
-            break;
-    default:
+    var itemHere = player.currentLocation.items;
+        switch (itemHere) {
+            
+        case noItem:
             extraInfo('There is no item here.');
-    }
+            break;
+        default:
+            extraInfo('There is ' + itemHere.object + ' here.');
+        }
+    
 }
 
 // functions for enable/disable buttons
