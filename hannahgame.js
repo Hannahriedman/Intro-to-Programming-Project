@@ -364,7 +364,7 @@ function take() {
         player.inventory.push(itemHere.object);
     }
     extraInfo(itemHere.whatIsIt);
-      
+    inventory();   
 }
 
 function inventory() {
