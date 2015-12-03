@@ -1,5 +1,5 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
-
+var Equipped = '';
 // Prototypes 
 function Location(name, item, tracker, descrip) {
     this.place = name;
@@ -33,7 +33,7 @@ var cave1 = new Location('Cave',noItem,0,'You are now in a cave.' +
 var cliffs1 = new Location('Cliffs',noItem,0,'You are now at the rocky cliffs!' + 
                            ' Be careful!');
 
-var secretCave1 = new Location('SecretCave',noItem,0,'The cliffs drop off into the' + 
+var secretCave1 = new Location('SecretCave',waterbottle,0,'The cliffs drop off into the' + 
                                ' ocean to the south. You decide to climb down the cliffs' +
                                ' and you find an enterance to a cave.');
 
@@ -67,7 +67,7 @@ var locations = [beach1,jungle1,cave1,cliffs1,secretCave1,waterfall1,ocean1,trap
 var player = {
     currentLocation: locations[0],
     currentPoints: 0,
-    inventory: ['Waterbottle'],
+    inventory: [],
     breadcrumbTrail: ['Beach']
 };
 
@@ -359,12 +359,24 @@ function input() {
 
 function take() {
     var itemHere = player.currentLocation.items;
-    if (itemHere !== noItem) {
-        player.currentLocation.items = noItem;
-        player.inventory.push(itemHere.object);
+    switch (itemHere){
+    case water:
+            if (Equipped === 'Waterbottle') {
+                player.currentLocation.items = noItem;
+                player.inventory.push(itemHere.object);
+                extraInfo(itemHere.whatIsIt);
+            } else {
+                extraInfo('You can not take the water unless you use the waterbottle.')
+            }
+            break;
+    default:
+            player.currentLocation.items = noItem;
+            player.inventory.push(itemHere.object);
+            extraInfo(itemHere.whatIsIt);
+            break;
     }
-    extraInfo(itemHere.whatIsIt);
-    inventory();   
+    inventory();  
+    
 }
 
 function inventory() {
@@ -392,7 +404,7 @@ function lookAround() {
             extraInfo('There is no item here.');
             break;
         default:
-            extraInfo('There is ' + itemHere.object + ' here.');
+            extraInfo('There is a ' + itemHere.object + ' here.');
         }
     
 }
@@ -404,6 +416,7 @@ function useItem() {
             case 'waterbottle':
             case 'Waterbottle':
                 extraInfo('You now have the waterbottle equipped.');
+                Equipped = 'Waterbottle';
                 break;
             default:
                 extraInfo('You can not use that item');
