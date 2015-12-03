@@ -15,6 +15,7 @@ function Item(name, descrip) {
 // new objects from prototypes
 
 // item objects
+var waterbottle = new Item('Waterbottle','You have taken a waterbottle.')
 var knife = new Item('Knife', 'You have taken a Knife.');
 var banana = new Item('Banana', 'You have taken a banana.');
 var water = new Item('Water', 'You have taken water.');
@@ -80,7 +81,7 @@ function yourPoints(descrip) {
 function extraInfo(descrip) {
     document.getElementById('info').innerHTML = descrip;
 }
-// functions for buttons 
+// functions for buttons and commands
 function goNorth() {
     switch (player.currentLocation) {
             
@@ -339,21 +340,17 @@ function input() {
     case 't':
         take();
         break;
-    case 'I':
-    case 'i':
-        inventory();
-        break;
     case 'H':
     case 'h':
         help();
         break;
-    case 'P':
-    case 'p':
-        prevous();
-        break;
     case 'L':
     case 'l':
         lookAround();
+        break;
+    case 'U':
+    case 'u':
+        useItem();
         break;
     default:
         setting('Invaild command, try again!');
@@ -379,7 +376,7 @@ function help() {
     var east = isEnabled('E');
     var south = isEnabled('S');
     var west = isEnabled('W');
-    extraInfo('Vaild text commands: H,T,I,P,L'+north+','+east+','+south+','+west);
+    extraInfo('Vaild text commands: H,T,L'+north+','+east+','+south+','+west);
 }
 
 function previous() {
@@ -397,6 +394,23 @@ function lookAround() {
         default:
             extraInfo('There is ' + itemHere.object + ' here.');
         }
+    
+}
+
+function useItem() {
+    var input = prompt('What item would you like to use?');
+    if (player.inventory.indexOf(input ==! -1)) {
+            switch (input) {
+            case 'waterbottle':
+            case 'Waterbottle':
+                extraInfo('You now have the waterbottle equipped.');
+                break;
+            default:
+                extraInfo('You can not use that item');
+            }
+    } else {
+            extraInfo('You do not have the ' + input + 'with you.')
+    }
     
 }
 
