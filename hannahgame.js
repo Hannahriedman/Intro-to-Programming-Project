@@ -336,20 +336,20 @@ function input() {
     case 'w':
         goWest();
         break;
-    case 'T':
-    case 't':
+    case 'Take':
+    case 'take':
         take();
         break;
-    case 'H':
-    case 'h':
+    case 'Help':
+    case 'help':
         help();
         break;
-    case 'L':
-    case 'l':
+    case 'Look':
+    case 'look':
         lookAround();
         break;
-    case 'U':
-    case 'u':
+    case 'Use':
+    case 'use':
         useItem();
         break;
     default:
@@ -376,7 +376,7 @@ function help() {
     var east = isEnabled('E');
     var south = isEnabled('S');
     var west = isEnabled('W');
-    extraInfo('Vaild text commands: H,T,L'+north+','+east+','+south+','+west);
+    extraInfo('Vaild text commands: Help,Take,Look,Use,'+north+','+east+','+south+','+west);
 }
 
 function previous() {
