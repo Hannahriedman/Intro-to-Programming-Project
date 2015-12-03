@@ -383,7 +383,8 @@ function help() {
 }
 
 function previous() {
-    document.getElementById('previous').innerHTML = ('History: ' + player.breadcrumbTrail);
+    var previousM = player.breadcrumbTrail;
+    document.getElementById('previous').innerHTML = ('History: ' + previousM.slice(previousM.length-5,previousM.length));
 }
 
 function lookAround() {
