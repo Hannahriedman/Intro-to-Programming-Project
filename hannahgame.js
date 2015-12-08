@@ -85,7 +85,7 @@ var map = [
      [ locations[3], locations[5], null, null ], // from SecretCave: Cliffs,Waterfall--
      [ locations[2], null, null, null ], // from Waterfall: Cave---
      [ locations[0], null, null, null ], // from Ocean: Beach---
-     [ null, null, locations[1], null ], // from Trap: ---Shack
+     [ null, null, null, locations[9] ], // from Trap: ---Shack
      [ null, locations[1], null, null ], // from Tree: -Jungle--
      [ null, locations[1], locations[8], null ], // from Shack: -Jungle,Tree-
      [ null, null, null, locations[1] ] // from BananaTree: ---Jungle
@@ -96,6 +96,7 @@ var map = [
 // Display text functions
 function showScene(site) {
     setting(site.whatIsHere);
+    buttons(site);
     //document.getElementById("scene").style.backgroundImage = "url('"+site.image+"')";
     yourPoints('Current Points: ' + player.currentPoints);
     
@@ -112,7 +113,29 @@ function extraInfo(descrip) {
 // functions for buttons and commands
 function from(loc,dir) {
     var locId = locations.indexOf(loc);
+    //buttons(locId);
     return map[locId][dir]; 
+}
+
+function buttons(loc) {
+    locId = map[locations.indexOf(loc)];
+   if  (locId[NORTH] !== null) {
+       enable('N');
+   } else {
+       disable('N');
+   } if (locId[EAST]) {
+       enable('E');
+   } else {
+       disable('E');
+   } if (locId[SOUTH]) {
+       enable('S');
+   } else {
+       disable('S');
+   } if (locId[WEST]) {
+       enable('W');
+   } else {
+       disable('W');
+   } 
 }
 
 function move(dir) {
@@ -365,7 +388,6 @@ function points() {
     var place = player.currentLocation;
     if (place.beenVisted === 0) {
             player.currentPoints += 5;
-            console.log("yay");
             place.beenVisted = 1;
     } 
 }
