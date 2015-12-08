@@ -1,11 +1,16 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
 var Equipped = '';
+const NORTH = 0;
+const EAST = 1;
+const SOUTH = 2;
+const WEST = 3;
 // Prototypes 
-function Location(name, item, tracker, descrip) {
+function Location(name, item, tracker, descrip, btn) {
     this.place = name;
     this.items = item;
     this.beenVisted = tracker;
     this.whatIsHere = descrip;
+    this.isEnabled = btn;
 };
 function Item(name, descrip) {
     this.object = name;
@@ -71,7 +76,30 @@ var player = {
     breadcrumbTrail: ['Beach']
 };
 
+var map = [
+     // NORTH, EAST, SOUTH, WEST 
+     [ locations[1], locations[2], locations[6], locations[3] ], // from Beach: Jungle,Cave,Ocean,Cliffs
+     [ locations[7], locations[10], locations[0], locations[8] ], // from Jungle: Trap,BananaTree,Beach,Tree
+     [ null, null, locations[5], locations[0] ], // from Cave: --Waterfall,Beach
+     [ null, locations[0], locations[4], null ], // from Cliffs: -Beach,SecretCave-
+     [ locations[3], locations[5], null, null ], // from SecretCave: Cliffs,Waterfall--
+     [ locations[2], null, null, null ], // from Waterfall: Cave---
+     [ locations[0], null, null, null ], // from Ocean: Beach---
+     [ null, null, locations[1], null ], // from Trap: ---Shack
+     [ null, locations[1], null, null ], // from Tree: -Jungle--
+     [ null, locations[1], locations[8], null ], // from Shack: -Jungle,Tree-
+     [ null, null, null, locations[1] ] // from BananaTree: ---Jungle
+    
+];
+
+
 // Display text functions
+function showScene(site) {
+    setting(site.whatIsHere);
+    //document.getElementById("scene").style.backgroundImage = "url('"+site.image+"')";
+    yourPoints('Current Points: ' + player.currentPoints);
+    
+}
 function setting(descrip) {
     document.getElementById('scene').innerHTML = descrip;
 } 
@@ -82,6 +110,22 @@ function extraInfo(descrip) {
     document.getElementById('info').innerHTML = descrip;
 }
 // functions for buttons and commands
+function from(loc,dir) {
+    var locId = locations.indexOf(loc);
+    return map[locId][dir]; 
+}
+
+function move(dir) {
+    var nextLocation = from(player.currentLocation,dir); /* TODO Use the function above to get the destination. */
+    if (nextLocation !== null) {
+        player.currentLocation = nextLocation;
+        points();
+        showScene(player.currentLocation);
+    } else {
+        setting("You cannont go that way");
+    }
+}
+/*
 function goNorth() {
     switch (player.currentLocation) {
             
@@ -315,6 +359,16 @@ function goWest() {
     
     }
 }
+*/
+
+function points() {
+    var place = player.currentLocation;
+    if (place.beenVisted === 0) {
+            player.currentPoints += 5;
+            console.log("yay");
+            place.beenVisted = 1;
+    } 
+}
 
 function input() {
     var userInput = document.getElementById('command').value;
@@ -322,19 +376,19 @@ function input() {
             
     case 'N':
     case 'n':
-        goNorth();
+        move(NORTH);
         break;
     case 'E':
     case 'e':
-        goEast();
+        move(EAST);
         break;
     case 'S':
     case 's':
-        goSouth();
+        move(SOUTH);
         break;
     case 'W':
     case 'w':
-        goWest();
+        move(WEST);
         break;
     case 'Take':
     case 'take':
