@@ -63,9 +63,10 @@ var shack1 = new Location('Shack',knife,0,'You grab onto the branch and pull' +
 
 var bananaTree1 = new Location('BananaTree',banana,0,'You have found Banana Trees,' +
                                ' there might be monkeys around. ');
+//var dead = new Location('Death',noItem,1,dead());
 
 // locations array 
-var locations = [beach1,jungle1,cave1,cliffs1,secretCave1,waterfall1,ocean1,trap1,tree1,shack1,bananaTree1];
+var locations = [beach1,jungle1,cave1,cliffs1,secretCave1,waterfall1,ocean1,trap1,tree1,shack1,bananaTree1,dead];
 
 // Player Object
 var player = {
@@ -74,13 +75,18 @@ var player = {
     inventory: [],
     breadcrumbTrail: ['Beach']
 };
+var messageC = 'You walk for 20 minutes but come up to a dead end.' +
+              ' There is no water around so you walk back to the entrance of the cave. ';
+var messageCl = 'You can see the whole island from here.' + 
+                    ' To the north you see a Jungle, maybe there will be water or food there.' +
+                    ' You go back to the entrance of Cliffs.\n');
 
 var map = [
      // NORTH, EAST, SOUTH, WEST 
      [ locations[1], locations[2], locations[6], locations[3] ], // from Beach: Jungle,Cave,Ocean,Cliffs
      [ locations[7], locations[10], locations[0], locations[8] ], // from Jungle: Trap,BananaTree,Beach,Tree
-     [ null, null, locations[5], locations[0] ], // from Cave: --Waterfall,Beach
-     [ null, locations[0], locations[4], null ], // from Cliffs: -Beach,SecretCave-
+     [ messageC, null, locations[5], locations[0] ], // from Cave: --Waterfall,Beach
+     [ messageCl, locations[0], locations[4], null ], // from Cliffs: -Beach,SecretCave-
      [ locations[3], locations[5], null, null ], // from SecretCave: Cliffs,Waterfall--
      [ locations[2], null, null, null ], // from Waterfall: Cave---
      [ locations[0], null, null, null ], // from Ocean: Beach---
@@ -140,15 +146,21 @@ function buttons(loc) {
 }
 
 function move(dir) {
-    var nextLocation = from(player.currentLocation,dir); /* TODO Use the function above to get the destination. */
-    if (nextLocation !== null) {
-        player.currentLocation = nextLocation;
-        points();
-        showScene(player.currentLocation);
+    var nextLocation = from(player.currentLocation,dir);
+    if (typeof nextLocation === 'object'){
+       if (nextLocation !== null) {
+            player.currentLocation = nextLocation;
+            points();
+            showScene(player.currentLocation);
+        } else {
+            setting("You cannont go that way");
+        } 
     } else {
-        setting("You cannont go that way");
+        setting(nextLocation);
     }
+    
 }
+
 
 function points() {
     var place = player.currentLocation;
