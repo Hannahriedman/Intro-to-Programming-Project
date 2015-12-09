@@ -17,15 +17,21 @@
     <div id="info"></div>
     <div id="inventory">Inventory: </div>
     <div id="previous">Previous Moves: </div>
-    <input id="command" type="text"/>
-    <button onclick="input();">Go</button>
-    <button id="N" onclick="move(NORTH);">North</button>
-    <button id="E" onclick="move(EAST);">East</button>
-    <button id="S" onclick="move(SOUTH);">South</button>
-    <button id="W" onclick="move(WEST);">West</button>
+    <div id="commands">
+        <input id="command" type="text"/>
+        <button onclick="input();">Go</button>
+        <button id="N" onclick="move(NORTH);">North</button>
+        <button id="E" onclick="move(EAST);">East</button>
+        <button id="S" onclick="move(SOUTH);">South</button>
+        <button id="W" onclick="move(WEST);">West</button>
+    </div>
     <button onclick="help();">Help</button>
     <a href="mailto:Hannah.Riedman1@marist.edu">Email me for help</a>
     <img src="map.png" width="475" height="500"> 
+    <audio controls autoplay>
+        <source src="CoolWater.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 </body>
     
 </html>

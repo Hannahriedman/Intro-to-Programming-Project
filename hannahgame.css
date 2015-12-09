@@ -1,6 +1,10 @@
 /* Hannah Riedman 11-19-15 Project 5 120L-115 */
-html {
-    background-color:#d2eaec
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    background-color:#d2eaec;
 }
 
 h1 {
@@ -17,20 +21,42 @@ h1 {
     border-style: groove;
     border-color: #a99090;
 }
-#points {
+
+#points  {
     background-color:#8fccd0;
-    display: fixed;
+    display:;
     border-width: thick;
     border-color:#035A6C;
     border-style:dotted;
     border-radius:5px;
     text-align: center;
-    width:100px;
+    width:20%;
     height:40px;
-    float:left;
-
+    
 }
-#info {
+#inventory {
+    background-color:#8fccd0;
+    display: inline;
+    border-width: thick;
+    border-color:#035A6C;
+    border-style:dashed;
+    border-radius:5px;
+    text-align: center;
+    width:40%;
+    height:40px;
+    
+}
+#previous {
+    width:40%;  
+}
+
+/*
+
+
+
+
+
+#info  {
     color:#1d6c72;
     display: fixed;
     text-align: center;
@@ -42,6 +68,11 @@ h1 {
     border-style:double;
     
 }
+#commands {
+    margin-top: 1em;
+}
+
+
 a {
     position: fixed;
     bottom: 10px;
