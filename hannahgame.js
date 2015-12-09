@@ -4,7 +4,9 @@ const NORTH = 0;
 const EAST = 1;
 const SOUTH = 2;
 const WEST = 3;
+
 // Prototypes 
+
 function Location(name, item, tracker, descrip, alive) {
     this.place = name;
     this.items = item;
@@ -19,7 +21,7 @@ function Item(name, descrip) {
 
 // new objects from prototypes
 
-// item objects
+    // item objects
 var waterbottle = new Item('Waterbottle','You have taken a waterbottle.')
 var knife = new Item('Knife', 'You have taken a Knife.');
 var banana = new Item('Banana', 'You have taken a banana.');
@@ -27,7 +29,7 @@ var water = new Item('Water', 'You have taken water.');
 var FedExBox = new Item('FedEx Box', 'You have taken the FedEx Box.');
 var noItem = new Item('No item', 'There is no item here');
 
-// loctaion objects
+    // loctaion objects
 var beach1 = new Location('Beach',noItem,1,'You are now back at the Beach.',0);
 
 var jungle1 = new Location('Jungle',noItem,0,'You are now in the Jungle.',0);
@@ -66,6 +68,14 @@ var bananaTree1 = new Location('BananaTree',banana,0,'You have found Banana Tree
                                ' there might be monkeys around. ',0);
 var dead = new Location('Death',noItem,1,'You are dead.',1);
 
+// Extra Messages that are not locations
+
+var messageC = 'You walk for 20 minutes but come up to a dead end.' +
+              ' There is no water around so you walk back to the entrance of the cave. ';
+var messageCl = 'You can see the whole island from here.' + 
+                    ' To the north you see a Jungle, maybe there will be water or food there.' +
+                    ' You go back to the entrance of Cliffs.\n';
+
 // locations array 
 var locations = [beach1,jungle1,cave1,cliffs1,secretCave1,waterfall1,ocean1,trap1,tree1,shack1,bananaTree1,dead];
 
@@ -76,12 +86,8 @@ var player = {
     inventory: [],
     breadcrumbTrail: ['Beach']
 };
-var messageC = 'You walk for 20 minutes but come up to a dead end.' +
-              ' There is no water around so you walk back to the entrance of the cave. ';
-var messageCl = 'You can see the whole island from here.' + 
-                    ' To the north you see a Jungle, maybe there will be water or food there.' +
-                    ' You go back to the entrance of Cliffs.\n';
 
+// MATRIX
 var map = [
      // NORTH, EAST, SOUTH, WEST 
      [ locations[1], locations[2], locations[6], locations[3] ], // from Beach: Jungle,Cave,Ocean,Cliffs
@@ -118,7 +124,16 @@ function yourPoints(descrip) {
 function extraInfo(descrip) {
     document.getElementById('info').innerHTML = descrip;
 }
-// functions for buttons and commands
+
+function previous() {
+    var previousM = player.breadcrumbTrail;
+    document.getElementById('previous').innerHTML = ('History: ' + previousM.slice(previousM.length-5,previousM.length));
+}
+function inventory() {
+    document.getElementById('inventory').innerHTML = ('Currently you have: ' + player.inventory);
+}
+
+// functions for navagation and points
 function from(loc,dir) {
     var locId = locations.indexOf(loc);
     //buttons(locId);
@@ -146,24 +161,6 @@ function buttons(loc) {
    } 
 }
 
-function move(dir) {
-    var nextLocation = from(player.currentLocation,dir);
-    if (typeof nextLocation === 'object'){
-       if (nextLocation !== null) {
-            death(nextLocation,dir);
-            player.currentLocation = nextLocation;
-            points();
-            player.breadcrumbTrail.push(player.currentLocation.place);
-            showScene(player.currentLocation);
-        } else {
-            setting("You cannont go that way");
-        } 
-    } else {
-        setting(nextLocation);
-    }
-    
-}
-
 function points() {
     var place = player.currentLocation;
     if (place.beenVisted === 0) {
@@ -172,152 +169,45 @@ function points() {
     } 
 }
 
-function input() {
-    var userInput = document.getElementById('command').value;
-    switch (userInput) {
-            
-    case 'N':
-    case 'n':
-        move(NORTH);
-        break;
-    case 'E':
-    case 'e':
-        move(EAST);
-        break;
-    case 'S':
-    case 's':
-        move(SOUTH);
-        break;
-    case 'W':
-    case 'w':
-        move(WEST);
-        break;
-    case 'Take':
-    case 'take':
-        take();
-        break;
-    case 'Help':
-    case 'help':
-        help();
-        break;
-    case 'Look':
-    case 'look':
-        lookAround();
-        break;
-    case 'Use':
-    case 'use':
-        useItem();
-        break;
-    default:
-        setting('Invaild command, try again!');
-    }
-}
-
-function take() {
-    var itemHere = player.currentLocation.items;
-    switch (itemHere){
-    case water:
-            if (Equipped === 'Waterbottle') {
-                player.currentLocation.items = noItem;
-                player.inventory.push(itemHere.object);
-                extraInfo(itemHere.whatIsIt);
-            } else {
-                extraInfo('You can not take the water unless you use the waterbottle.')
-            }
-            break;
-    default:
-            player.currentLocation.items = noItem;
-            player.inventory.push(itemHere.object);
-            extraInfo(itemHere.whatIsIt);
-            break;
-    }
-    inventory();  
-    
-}
-
-function inventory() {
-    document.getElementById('inventory').innerHTML = ('Currently you have: ' + player.inventory);
-}
-
-function help() {
-    var north = isEnabled('N');
-    var east = isEnabled('E');
-    var south = isEnabled('S');
-    var west = isEnabled('W');
-    extraInfo('Vaild text commands: Help,Take,Look,Use,'+north+','+east+','+south+','+west);
-}
-
-function previous() {
-    var previousM = player.breadcrumbTrail;
-    document.getElementById('previous').innerHTML = ('History: ' + previousM.slice(previousM.length-5,previousM.length));
-}
-
-function lookAround() {
-    var itemHere = player.currentLocation.items;
-        switch (itemHere) {
-            
-        case noItem:
-            extraInfo('There is no item here.');
-            break;
-        default:
-            extraInfo('There is a ' + itemHere.object + ' here.');
-        }
-    
-}
-
-function useItem() {
-    var input = prompt('What item would you like to use?');
-    if (player.inventory.indexOf(input ==! -1)) {
-            switch (input) {
-            case 'waterbottle':
-            case 'Waterbottle':
-                extraInfo('You now have the waterbottle equipped.');
-                Equipped = 'Waterbottle';
-                break;
-            default:
-                extraInfo('You can not use that item');
-            }
-    } else {
-            extraInfo('You do not have the ' + input + 'with you.')
-    }
-    
-}
-
 function death(nxtlocation, dir) {
     var nextlocation = nxtlocation;
-    var restart = 'You are dead and restart on the Beach.';
+    var deadtxt = 'You are dead and restart on the Beach.';
     if (nextlocation.endOfGame === 1) {   
         switch(player.breadcrumbTrail.pop()) {
         case 'Ocean':
-                if (dir === EAST) {
-                    locations[11].whatIsHere = 'You start to swim and get caught in a rip tide.' +
-                    restart;
-                } else {
-                    locations[11].whatIsHere = 'You start to swim and get caught in a rip tide.' +
-                    restart;
+            if (dir === EAST) {
+                locations[11].whatIsHere = 'You start to swim and get caught in a rip tide.' +
+                deadtxt;
+            } else {
+                locations[11].whatIsHere = 'You start to swim and get caught in a rip tide.' +
+                deadtxt;
                 } 
-                break;
+            break;
         case 'Trap':
-                if (dir === EAST) {
-                    locations[11].whatIsHere = 'You reach for the vine but it turns out that its a Snake!' + 
-                    ' Still trapped by the quicksand, the snake attacks and you die.' + restart;
-                } else {
-                    locations[11].whatIsHere = 'You try to go that way but you end up sinking further ' + 
-                    ' into the quicksand.' + restart;
-                }
+            if (dir === EAST) {
+                locations[11].whatIsHere = 'You reach for the vine but it turns out that its a Snake!' + 
+                ' Still trapped by the quicksand, the snake attacks and you die.' + deadtxt;
+            } else {
+                locations[11].whatIsHere = 'You try to go that way but you end up sinking further ' + 
+                ' into the quicksand.' + deadtxt;
+            }
             break;
         case 'Cliffs':
             locations[11].whatIsHere = 'You should have been more careful. You try to ' + 
-            'get a better look at the edge of the cliffs and you fall to your death.' + restart;
+            'get a better look at the edge of the cliffs and you fall to your death.' + deadtxt;
             break;
         }
+        restart()
+    } 
+}
+
+/** Problem in this function with not a complete restart because need to restart items and tracker variable**/
+function restart() {
         player.currentPoints = 0;
         player.currentLocation = locations[0];
         player.inventory = [];
         player.breadcrumbTrail = ['Beach'];
-    } 
 }
-
 // functions for enable/disable buttons
 function disable(mybtn) {
     document.getElementById(mybtn).disabled = true;
