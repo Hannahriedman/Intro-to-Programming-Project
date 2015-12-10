@@ -57,6 +57,9 @@ function take() {
                 extraInfo('You can not take the water unless you use the waterbottle.')
             }
             break;
+    case noItem:
+            extraInfo('There is no item to take here.');
+            break;
     default:
             player.currentLocation.items = noItem;
             player.inventory.push(itemHere.object);
@@ -90,7 +93,8 @@ function lookAround() {
 
 function useItem() {
     var input = prompt('What item would you like to use?');
-    if (player.inventory.indexOf(input ==! -1)) {
+    if (player.inventory.indexOf(input) ==! null) {
+            
             switch (input) {
             case 'waterbottle':
             case 'Waterbottle':
