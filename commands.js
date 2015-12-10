@@ -38,6 +38,8 @@ function input() {
     case 'use':
         useItem();
         break;
+    case 'I am a failure':
+        restart();
     default:
         setting('Invaild command, try again!');
     }

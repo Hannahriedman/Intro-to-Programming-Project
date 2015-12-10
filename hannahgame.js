@@ -101,7 +101,7 @@ var map = [
      [ null, locations[1], null, null ], // from Tree: -Jungle--
      [ null, locations[1], locations[8], null ], // from Shack: -Jungle,Tree-
      [ null, null, null, locations[1] ], // from BananaTree: ---Jungle
-     [ locations[1], locations[2], locations[6], locations[3]]// from death: back to beach 
+     [ null, null, null, null ]// from death: back to beach 
 ];
 
 
@@ -109,8 +109,7 @@ var map = [
 function showScene(site) {
     setting(site.whatIsHere);
     buttons(site);
-    //document.getElementById("scene").style.backgroundImage = "url('"+site.image+"')";
-    yourPoints('Current Points: ' + player.currentPoints);
+    yourPoints(player.currentPoints);
     inventory();
     previous();
     
@@ -127,10 +126,10 @@ function extraInfo(descrip) {
 
 function previous() {
     var previousM = player.breadcrumbTrail;
-    document.getElementById('previous').innerHTML = ('History: ' + previousM.slice(previousM.length-5,previousM.length));
+    document.getElementById('previous').innerHTML = ('Previous Moves: ' + previousM.slice(previousM.length-5,previousM.length));
 }
 function inventory() {
-    document.getElementById('inventory').innerHTML = ('Currently you have: ' + player.inventory);
+    document.getElementById('items').innerHTML = (player.inventory);
 }
 
 // functions for navagation and points
@@ -171,7 +170,7 @@ function points() {
 
 function death(nxtlocation, dir) {
     var nextlocation = nxtlocation;
-    var deadtxt = 'You are dead and restart on the Beach.';
+    var deadtxt = 'You are dead. Type "I am a failure" to try again.';
     if (nextlocation.endOfGame === 1) {   
         switch(player.breadcrumbTrail.pop()) {
         case 'Ocean':
@@ -197,16 +196,11 @@ function death(nxtlocation, dir) {
             'get a better look at the edge of the cliffs and you fall to your death.' + deadtxt;
             break;
         }
-        restart()
+        
     } 
 }
-
-/** Problem in this function with not a complete restart because need to restart items and tracker variable**/
 function restart() {
-        player.currentPoints = 0;
-        player.currentLocation = locations[0];
-        player.inventory = [];
-        player.breadcrumbTrail = ['Beach'];
+        location.reload();
 }
 // functions for enable/disable buttons
 function disable(mybtn) {

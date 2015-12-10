@@ -3,35 +3,61 @@
 <html>
     
 <head>
+    
     <title>Where's the Water?</title>
     <meta charset="utf-8"/>
     <script src="hannahgame.js" type="text/javascript"></script>
     <script src="locations.js" type="text/javascript"></script>
     <script src="commands.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="hannahgame.css"/>
+    
 </head>
 <body>
+<header>
     <h1>Where's the Water?</h1>
-    <div id="scene">You are on a deserted island. Your plane crashed,and you are the only survior. Currently you are on the Beach. To the North is the Jungle, to the East is a Cave, to the South is the Ocean, and to the West is the Cliffs. Find a source of water before you become dehydrated. </div>
-    <div id="points">Current points: 0</div>
-    <div id="info"></div>
-    <div id="inventory">Inventory: </div>
+</header><aside>
+    
+    <div id="info">
+        <h2>Messages:</h2>
+    </div>
+    <button onclick="help();">Help</button>
+    
+</aside><main>
+    
+    <div id="scene">You are on a deserted island. Your plane crashed,and you are the only survior. Currently you are on the Beach. To the North is the Jungle, to the East is a Cave, to the South is the Ocean, and to the West is the Cliffs. Find a source of water before you become dehydrated. 
+    </div>
     <div id="previous">Previous Moves: </div>
+    
     <div id="commands">
         <input id="command" type="text"/>
         <button onclick="input();">Go</button>
-        <button id="N" onclick="move(NORTH);">North</button>
-        <button id="E" onclick="move(EAST);">East</button>
-        <button id="S" onclick="move(SOUTH);">South</button>
-        <button id="W" onclick="move(WEST);">West</button>
+        <div id="nav">
+            <button id="N" onclick="move(NORTH);">North</button>
+            <button id="E" onclick="move(EAST);">East</button>
+            <button id="S" onclick="move(SOUTH);">South</button>
+            <button id="W" onclick="move(WEST);">West</button>
+        </div>
     </div>
-    <button onclick="help();">Help</button>
-    <a href="mailto:Hannah.Riedman1@marist.edu">Email me for help</a>
-    <img src="map.png" width="475" height="500"> 
-    <audio controls autoplay>
+</main><aside>
+    
+    <div id="inventory">
+        <h5>Inventory: </h5>
+        <p id="items"></p>
+    </div>
+    <div id="currentP">
+        <h4>Current Points:</h4>
+        <p id="points"></p>
+    </div>
+    
+</aside><footer>
+        <a href="mailto:Hannah.Riedman1@marist.edu">Email me for help</a>
+        <audio controls >
         <source src="CoolWater.m4a" type="audio/mpeg">
         Your browser does not support the audio element.
-    </audio>
+        </audio>
+    </footer>
+    <img src="map.png" width="475" height="500"> 
+    
 </body>
     
 </html>
