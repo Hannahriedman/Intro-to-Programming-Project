@@ -48,7 +48,6 @@ function input() {
 
 function take() {
     var itemHere = player.currentLocation.items;
-    console.log('string: ' + itemHere.object);
     switch (itemHere){
     case water:
             if (Equipped === 'Waterbottle') {
@@ -95,10 +94,7 @@ function lookAround() {
 
 function useItem() {
     var input = prompt('What item would you like to use?');
-    console.log(input);
-    console.log(player.inventory.indexOf(input));
-    if ((player.inventory.indexOf(input)) ==! -1) {
-            
+    if ((player.inventory.indexOf(input)) !== -1) {
             switch (input) {
             case 'Waterbottle':
                 extraInfo('You now have the waterbottle equipped.');

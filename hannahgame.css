@@ -4,18 +4,22 @@ html, body {
     padding: 0;
     width: 100%;
     text-align: center;
-    background-color:#d2eaec
+    background-color:#d2eaec;
+    font-family: fantasy;
+    
 }
 
 h1 {
     color:#035a6c;
     text-align: center;
+    font-family: cursive;
 }
 
 aside, main {
     display: inline-block;
     vertical-align: top;
     padding: 0 1%;
+    word-wrap:break-word;
 }
 
 main {
@@ -41,6 +45,7 @@ header, footer {
     border-radius: 1em;
     color:#035a6c; 
     border-style: groove;
+    font-size: 2vw;
 }
 
 #previous {
@@ -54,7 +59,8 @@ header, footer {
 }
 
 
-#inventory, #currentP{
+#inventory, #currentP {
+    margin-bottom: 0;
     background-color:#8fccd0;
     height: 6em;
     border-width: thick;
@@ -62,7 +68,11 @@ header, footer {
     border-style:groove;
     border-radius:5px;
 }
-
+#items, #points, #previous{
+    font-size: 1.4vw;
+    margin: 0;
+    
+}
 #scene {
     background-color:#f6e3d2;
     border: 1px;
@@ -70,9 +80,15 @@ header, footer {
     height: 9em;
     
 }
+h5, h4 {
+    margin: 0;
+}
 #info {
+    padding: 0;
     background-color: #8fccd0;
     border-color:#035A6C;
+    word-wrap: break-word;
+    
 }
 
 #controls {
@@ -81,5 +97,8 @@ header, footer {
 
 #command {
     width: 16ex;
+}
+#commands {
+    padding: 1em;
 }
 
