@@ -1,5 +1,5 @@
 // Hannah Riedman 10-17-15 Project 3 120L-115
-var Equipped = '';
+
 const NORTH = 0;
 const EAST = 1;
 const SOUTH = 2;
@@ -126,8 +126,13 @@ function extraInfo(descrip) {
 
 function previous() {
     var previousM = player.breadcrumbTrail;
-    document.getElementById('previous').innerHTML = ('Previous Moves: ' + previousM.slice(previousM.length-5,previousM.length));
-}
+    if (previousM.length >  5) {
+        document.getElementById('previous').innerHTML = ('Previous Moves: ' +             previousM.slice(previousM.length-5,previousM.length));
+    } else {
+        document.getElementById('previous').innerHTML = ('Previous Moves: ' +             previousM);
+    }
+    }
+    
 function inventory() {
     document.getElementById('items').innerHTML = (player.inventory);
 }
@@ -135,7 +140,6 @@ function inventory() {
 // functions for navagation and points
 function from(loc,dir) {
     var locId = locations.indexOf(loc);
-    //buttons(locId);
     return map[locId][dir]; 
 }
 

@@ -1,6 +1,7 @@
 // Hannah Riedman 12-9-15 Final Project 120L-115
 
 // Functions that go with text commands or buttons
+var Equipped = '';
 
 function input() {
     var userInput = document.getElementById('command').value;
@@ -47,6 +48,7 @@ function input() {
 
 function take() {
     var itemHere = player.currentLocation.items;
+    console.log('string: ' + itemHere.object);
     switch (itemHere){
     case water:
             if (Equipped === 'Waterbottle') {
@@ -93,10 +95,11 @@ function lookAround() {
 
 function useItem() {
     var input = prompt('What item would you like to use?');
-    if (player.inventory.indexOf(input) ==! null) {
+    console.log(input);
+    console.log(player.inventory.indexOf(input));
+    if ((player.inventory.indexOf(input)) ==! -1) {
             
             switch (input) {
-            case 'waterbottle':
             case 'Waterbottle':
                 extraInfo('You now have the waterbottle equipped.');
                 Equipped = 'Waterbottle';
@@ -105,7 +108,8 @@ function useItem() {
                 extraInfo('You can not use that item');
             }
     } else {
-            extraInfo('You do not have the ' + input + 'with you.')
+            extraInfo('You do not have the ' + input + ' with you.' +
+            '*Hint* make sure '+ input + ' has correct Case.')
     }
     
 }
