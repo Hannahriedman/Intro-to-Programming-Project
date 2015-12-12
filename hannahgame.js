@@ -127,9 +127,10 @@ function extraInfo(descrip) {
 function previous() {
     var previousM = player.breadcrumbTrail;
     if (previousM.length >  5) {
-        document.getElementById('previous').innerHTML = ('Previous Moves: ' +             previousM.slice(previousM.length-5,previousM.length));
+        document.getElementById('previous').innerHTML = ('Previous Moves: ' +  
+        previousM.slice(previousM.length-5,previousM.length));
     } else {
-        document.getElementById('previous').innerHTML = ('Previous Moves: ' +             previousM);
+        document.getElementById('previous').innerHTML = ('Previous Moves: ' + previousM);
     }
     }
     
